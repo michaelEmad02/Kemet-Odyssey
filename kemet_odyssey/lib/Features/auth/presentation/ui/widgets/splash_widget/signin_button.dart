@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kemet_odyssey/Core/widgets/glassmorphic_container.dart';
+import 'package:kemet_odyssey/core/widgets/glassmorphic_container.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({super.key});
@@ -20,11 +20,11 @@ class SignInButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       overlayColor: isDark
           ? const Color(0x99353535)
-          : const Color.fromARGB(190, 255, 255, 255),
+          : const Color.fromARGB(200, 255, 255, 255),
       border:
           Border.all(color: theme.colorScheme.outlineVariant.withOpacity(0.1)),
       child: InkWell(
-        onTap: () => context.pushNamed('login'),
+        onTap: () => context.pushNamed('register'),
         borderRadius: BorderRadius.circular(15),
         child: SizedBox(
           width: double.infinity,

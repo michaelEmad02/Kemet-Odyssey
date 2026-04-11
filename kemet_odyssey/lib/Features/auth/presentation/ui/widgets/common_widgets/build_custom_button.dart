@@ -1,16 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kemet_odyssey/Core/theme/app_colors.dart';
+import 'package:kemet_odyssey/core/theme/app_colors.dart';
 
 // ─────────────────────────────────────────────
 // Begin Exploration Button
 // ─────────────────────────────────────────────
 
-
-class BeginExplorationButton extends StatelessWidget {
-  const BeginExplorationButton({super.key});
+class BuilCustomButton extends StatelessWidget {
+  const BuilCustomButton(
+      {super.key, required this.title, required this.iconData, this.onPressed});
+  final String title;
+  final IconData iconData;
+  final VoidCallback? onPressed; 
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class BeginExplorationButton extends StatelessWidget {
         ],
       ),
       child: ElevatedButton(
-        onPressed: () => context.goNamed('home'),
+        onPressed: () => onPressed,
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(double.infinity, 60),
         ),
@@ -34,19 +35,18 @@ class BeginExplorationButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'BEGIN EXPLORATION',
+              title,
               style: theme.textTheme.labelLarge?.copyWith(
                 color: Colors.white.withOpacity(0.99),
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(width: 8),
-            Icon(Icons.arrow_forward,
+            Icon(iconData,
                 color: Colors.white.withOpacity(0.99), size: 20),
           ],
         ),
       ),
-    ).animate().fadeIn(delay: 700.ms).slideY(begin: 0.2, end: 0);
+    ).animate().fadeIn(delay: 900.ms).slideY(begin: 0.2, end: 0);
   }
 }
-
