@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
 
 // ─────────────────────────────────────────────
 // Begin Exploration Button
 // ─────────────────────────────────────────────
 
-class BuilCustomButton extends StatelessWidget {
-  const BuilCustomButton(
+class BuildCustomButton extends StatelessWidget {
+  const BuildCustomButton(
       {super.key, required this.title, required this.iconData, this.onPressed});
   final String title;
   final IconData iconData;
@@ -47,6 +46,6 @@ class BuilCustomButton extends StatelessWidget {
           ],
         ),
       ),
-    ).animate().fadeIn(delay: 900.ms).slideY(begin: 0.2, end: 0);
+    );
   }
 }

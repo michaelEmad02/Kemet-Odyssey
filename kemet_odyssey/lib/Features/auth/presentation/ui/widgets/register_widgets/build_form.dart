@@ -95,10 +95,13 @@ class _BuildFormState extends State<BuildForm> {
         const SizedBox(height: 24),
 
         // CTA Button
-        BuilCustomButton(
-            title: "BEGIN EXPEDITION",
-            iconData: Icons.explore,
-            onPressed: () => context.goNamed('home')),
+        BuildCustomButton(
+                title: "BEGIN EXPEDITION",
+                iconData: Icons.explore,
+                onPressed: () => context.goNamed('home'))
+            .animate()
+            .fadeIn(delay: 900.ms)
+            .slideY(begin: 0.2, end: 0),
 
         const SizedBox(height: 32),
 
@@ -157,11 +160,11 @@ class BuildAlreadyHaveAccount extends StatelessWidget {
             WidgetSpan(
               child: GestureDetector(
                 onTap: () {
-                  if (context.canPop()) {
-                    context.pop();
-                  } else {
-                    context.goNamed('splash');
-                  }
+                  // if (context.canPop()) {
+                  //   context.pop();
+                  // } else {
+                    context.goNamed('login');
+                  // }
                 },
                 child: Text(
                   'Sign In',

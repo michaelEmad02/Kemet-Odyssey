@@ -124,11 +124,11 @@ class _ActionsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BuilCustomButton(
+        BuildCustomButton(
           title: "BEGIN EXPEDITION",
           iconData: Icons.arrow_forward,
           onPressed: () => context.goNamed('home'),
-        ),
+        ).animate().fadeIn(delay: 900.ms).slideY(begin: 0.2, end: 0),
         const SizedBox(height: 16),
         const SignInButton(),
         const SizedBox(height: 48),
