@@ -8,6 +8,7 @@ import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/city
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/explore_cities_screen.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/place_details_screen.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/screens/home_screen.dart';
+import 'package:kemet_odyssey/features/profile/presentation/ui/screens/profile_screen.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -74,6 +75,51 @@ class AppRouter {
                 name: 'home',
                 pageBuilder: (context, state) =>
                     const MaterialPage(child: HomeScreen()),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/explore',
+                name: 'explore',
+                pageBuilder: (context, state) => const MaterialPage(child: Text("")),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/plan',
+                name: 'plan',
+                pageBuilder: (context, state) => const MaterialPage(child: Text("")),
+                routes: [
+                  GoRoute(
+                    path: 'generated',
+                    name: 'generated_plan',
+                    pageBuilder: (context, state) =>
+                        const MaterialPage(child: Text("")),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/saved',
+                name: 'saved',
+                pageBuilder: (context, state) => const MaterialPage(child: Text("")),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/profile',
+                name: 'profile',
+                pageBuilder: (context, state) =>
+                    const MaterialPage(child: ProfileScreen()),
               ),
             ],
           ),
