@@ -50,7 +50,7 @@ class HomeBody extends StatelessWidget {
                   title: 'Explore Cities',
                   animationDelay: const Duration(milliseconds: 400),
                   onViewAll: () {
-                    context.pushNamed('cities');
+                    context.pushNamed('exploreCities');
                   },
                 ),
                 BuildCitiesListView(

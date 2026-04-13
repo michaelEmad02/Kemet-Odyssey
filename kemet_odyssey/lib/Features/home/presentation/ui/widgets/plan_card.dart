@@ -91,13 +91,14 @@ class BuildCardHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 100,
+          width: 110,
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: theme.colorScheme.primary.withOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 Icons.star_border_outlined,

@@ -4,6 +4,8 @@ import 'package:kemet_odyssey/core/widgets/main_layout.dart';
 import 'package:kemet_odyssey/features/auth/presentation/ui/screens/login_screen.dart';
 import 'package:kemet_odyssey/features/auth/presentation/ui/screens/register_screen.dart';
 import 'package:kemet_odyssey/features/auth/presentation/ui/screens/splash_screen.dart';
+import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/city_details_screen.dart';
+import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/explore_cities_screen.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/screens/home_screen.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -33,6 +35,22 @@ class AppRouter {
         pageBuilder: (context, state) => const MaterialPage(
           child: LoginScreen(),
         ),
+      ),
+      GoRoute(
+        path: '/exploreCities',
+        name: 'exploreCities',
+        pageBuilder: (context, state) => const MaterialPage(
+          child: ExploreCitiesScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/city/:id',
+        name: 'city_details',
+        parentNavigatorKey: rootNavigatorKey,
+        pageBuilder: (context, state) {
+          final id = state.pathParameters['id'] ?? 'luxor';
+          return MaterialPage(child: CityDetailsScreen(cityId: id));
+        },
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
