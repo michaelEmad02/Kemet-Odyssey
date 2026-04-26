@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/cubit/theme_cubit.dart';
+import 'package:kemet_odyssey/core/utils/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   runApp(
     BlocProvider(
       create: (_) => ThemeCubit(),

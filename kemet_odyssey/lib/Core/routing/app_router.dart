@@ -8,6 +8,7 @@ import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/city
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/explore_cities_screen.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/place_details_screen.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/screens/home_screen.dart';
+import 'package:kemet_odyssey/features/profile/presentation/ui/screens/favorites_screen.dart';
 import 'package:kemet_odyssey/features/profile/presentation/ui/screens/profile_screen.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -83,7 +84,8 @@ class AppRouter {
               GoRoute(
                 path: '/explore',
                 name: 'explore',
-                pageBuilder: (context, state) => const MaterialPage(child: Text("")),
+                pageBuilder: (context, state) =>
+                    const MaterialPage(child: ExploreCitiesScreen()),
               ),
             ],
           ),
@@ -92,7 +94,8 @@ class AppRouter {
               GoRoute(
                 path: '/plan',
                 name: 'plan',
-                pageBuilder: (context, state) => const MaterialPage(child: Text("")),
+                pageBuilder: (context, state) =>
+                    const MaterialPage(child: Text("")),
                 routes: [
                   GoRoute(
                     path: 'generated',
@@ -107,9 +110,10 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/saved',
-                name: 'saved',
-                pageBuilder: (context, state) => const MaterialPage(child: Text("")),
+                path: '/favorites',
+                name: 'favorites',
+                pageBuilder: (context, state) =>
+                    const MaterialPage(child: FavoritesScreen()),
               ),
             ],
           ),

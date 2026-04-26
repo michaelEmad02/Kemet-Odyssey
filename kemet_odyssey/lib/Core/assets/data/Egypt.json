@@ -345,7 +345,6 @@
           },
           "contect-us": "(20) 2 27354532"
         },
-
         {
           "id": 10,
           "name": "Cairo_Festival mall",
@@ -1569,7 +1568,6 @@
           },
           "contect-us": "20 34876434"
         },
-
         {
           "id": 44,
           "name": "Abu Abbas Al-Morsi Mosque",
@@ -1604,7 +1602,6 @@
           },
           "contect-us": "20 3 4801253"
         },
-
         {
           "id": 45,
           "name": "Commander Ibrahim Mosque",
@@ -1638,7 +1635,6 @@
           },
           "contect-us": "20 3 4801253"
         },
-
         {
           "id": 46,
           "name": "St. Mark's Cathedral",
@@ -1673,7 +1669,6 @@
           },
           "contect-us": "20 3 4873570"
         },
-
         {
           "id": 47,
           "name": "Stanley Bridge",
@@ -1708,7 +1703,6 @@
           },
           "contect-us": ""
         },
-
         {
           "id": 48,
           "name": "El Raml Station",
@@ -1742,7 +1736,6 @@
           },
           "contect-us": ""
         },
-
         {
           "id": 49,
           "name": "Maamoura Beach",
@@ -1876,7 +1869,6 @@
           },
           "contect-us": ""
         },
-
         {
           "id": 53,
           "name": "City Center Alexandria",
@@ -2112,7 +2104,6 @@
           },
           "contect-us": "0862342200"
         },
-
         {
           "id": 59,
           "name": "Tuna Gebel",
@@ -2147,7 +2138,6 @@
           },
           "contact-us": "(20) 86 754321"
         },
-
         {
           "id": 60,
           "name": "Beni Hassan Tombs",
@@ -2217,7 +2207,6 @@
           },
           "contact-us": "(20) 86 756543"
         },
-
         {
           "id": 62,
           "name": "Great Aten Temple",
@@ -2694,7 +2683,6 @@
           },
           "contact-us": "(20) 86 759876"
         },
-
         {
           "id": 75,
           "name": "Kalabsha Temple",
@@ -2747,7 +2735,6 @@
             "latitude": 24.101997787448152,
             "longitude": 32.889107446817135
           },
-
           "description": "The Dome of Abu Al-Hawa, nestled [provide location details], offers panoramic views of the majestic Nile River and the surrounding landscape. Originally built as a watchtower during the Ottoman period, it now serves as a popular vantage point for tourists seeking breathtaking vistas of Aswan and its environs.",
           "history": "The Dome of Abu Al-Hawa was constructed during the Old Kingdom of Egypt, around 2500 BCE. It is one of several rock-cut tombs located in the Aswan region, which served as burial sites for local governors and officials. The tomb is named after a local saint, Abu Al-Hawa, whose shrine is located nearby. The interior of the tomb features intricate carvings and hieroglyphic inscriptions depicting scenes from the afterlife and offerings to the deceased.",
           "work-days": {
@@ -2961,7 +2948,6 @@
           },
           "contact-us": "(20) 86 7234567"
         },
-
         {
           "id": 83,
           "name": "Tabia Mosque",
@@ -3027,7 +3013,6 @@
           },
           "contect-us": "011 53004525"
         },
-
         {
           "id": 85,
           "name": "The plants island",
@@ -3061,7 +3046,6 @@
           },
           "contect-us": "01200285050"
         },
-
         {
           "id": 86,
           "name": "Animalia Museum",
@@ -3105,7 +3089,11 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/suez/Ataqa Mountains.jpg",
       "description": "A bustling port city at the southern tip of the Suez Canal, Suez is a vital link between the Red Sea and the Mediterranean Sea, offering a unique blend of history, industry, and cultural charm.",
-      "categories": ["Religious", "Cultural and historical", "coastal"],
+      "categories": [
+        "Religious",
+        "Cultural and historical",
+        "coastal"
+      ],
       "places-list": [
         "Suez Museum",
         "Ataqa Mountains",
@@ -4115,7 +4103,6 @@
           },
           "contect-us": "20235317344"
         },
-
         {
           "id": 114,
           "name": "Wadi Hammamat",
@@ -4149,7 +4136,6 @@
           },
           "contect-us": ""
         },
-
         {
           "id": 115,
           "name": "Sand City Hurghada",
@@ -4183,7 +4169,6 @@
           },
           "contect-us": "010 90042265"
         },
-
         {
           "id": 116,
           "name": "Al Mina Mosque",
@@ -4216,7 +4201,6 @@
           },
           "contect-us": ""
         },
-
         {
           "id": 117,
           "name": "valley of camels",
@@ -4362,7 +4346,6 @@
           },
           "description": "The Monastery of Anba Makar, also known as the Monastery of St. Macarius the Great, is a Coptic Orthodox monastery located in the Wadi El Natrun desert in Egypt. It is named after Saint Macarius the Great, a prominent desert father and early Christian monk.",
           "history": "The Monastery of Anba Makar was founded in the 4th century AD by Saint Macarius himself. It has a rich history of monastic life and spirituality, attracting monks and pilgrims from all over the world. The monastery has weathered centuries of challenges and has remained a beacon of Christian faith and asceticism.",
-
           "work-days": {
             "from": "Saturday",
             "to": "Friday"
@@ -4395,7 +4378,6 @@
           },
           "description": "Zaghloul Mosque is a historic mosque located in Behaira Governorate, Egypt. It is named after Saad Zaghloul, a prominent Egyptian nationalist leader who played a key role in the country's struggle for independence in the early 20th century.",
           "history": "The history of Zaghloul Mosque dates back to the early 20th century when it was built to honor Saad Zaghloul's legacy. It has since served as a symbol of national pride and a place of worship for the local Muslim community.",
-
           "work-days": {
             "from": "Saturday",
             "to": "Friday"
@@ -4557,7 +4539,6 @@
           },
           "description": "Tunisia Village is known for its picturesque landscapes and traditional pottery making. It offers a unique cultural experience with its beautiful countryside and artisanal crafts.",
           "history": "Tunisia Village was established in the mid-20th century and became renowned for its pottery industry. Local and international artists have contributed to its reputation as a cultural hub in Fayoum.",
-
           "work-days": {
             "from": "Saturday",
             "to": "Friday"
@@ -4750,7 +4731,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/Ismailia/ismailia governorate.jpg",
       "description": "Ismailia, known as the 'City of Beauty and Enchantment', is located on the west bank of the Suez Canal and is famed for its beautiful gardens, the scenic Ismailia Lake, and rich history.",
-      "categories": ["Cultural and historical", "coastal"],
+      "categories": [
+        "Cultural and historical",
+        "coastal"
+      ],
       "places-list": [
         "Fayed",
         "Ismailia Antiquities Museum",
@@ -4905,7 +4889,9 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/New Valley/newvally photo .jpeg",
       "description": "The New Valley Governorate, known for its vast deserts and oases, offers a unique blend of natural beauty, historical sites, and cultural heritage.",
-      "categories": ["Cultural and historical"],
+      "categories": [
+        "Cultural and historical"
+      ],
       "places-list": [
         "Qasr El Bagawat Hotel",
         "Stone Monastery",
@@ -5200,7 +5186,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/Assiut/Assuit.jpg",
       "description": "Assiut is a governorate in Upper Egypt known for its ancient historical sites and rich cultural heritage. It is home to several important monuments and archaeological sites.",
-      "categories": ["Cultural and historical", "Religious"],
+      "categories": [
+        "Cultural and historical",
+        "Religious"
+      ],
       "places-list": [
         "Mujahideen Mosque",
         "Monastery of the Virgin in Drunka",
@@ -5651,7 +5640,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/Port Said/Port Said.jpg",
       "description": "Port Said is a major port city in Egypt, located at the northern end of the Suez Canal. It is known for its historic buildings, beautiful waterfront, and significant role in international trade.",
-      "categories": ["Cultural and historical", "Religious"],
+      "categories": [
+        "Cultural and historical",
+        "Religious"
+      ],
       "places-list": [
         "Port Said Military Museum",
         "Port Said Lighthouse",
@@ -5943,7 +5935,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/Damietta/Damietta.jpg",
       "description": "Damietta is a port city in the Nile Delta, known for its rich history, vibrant culture, and significant role in Egypt's economy. It is famous for its furniture industry and beautiful beaches.",
-      "categories": ["Religious", "coastal"],
+      "categories": [
+        "Religious",
+        "coastal"
+      ],
       "places-list": [
         "Amr ibn al-Aas mosque",
         "Al-Muaini Mosque",
@@ -6096,7 +6091,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/sohag/Sohag.jpg",
       "description": "located in Upper Egypt along the Nile River, is known for its rich historical sites, including the ancient city of Abydos and notable Coptic monasteries, as well as its thriving agricultural sector. The region combines a vibrant cultural heritage with ongoing development in education and infrastructure.",
-      "categories": ["Cultural and historical", "Religious"],
+      "categories": [
+        "Cultural and historical",
+        "Religious"
+      ],
       "places-list": [
         "Sohag National Museum",
         "The archaeological tombs of Al-Hawawish",
@@ -6358,7 +6356,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/North Sinai/North Sinai.jpg",
       "description": "North Sinai Governorate encompasses a diverse terrain, ranging from coastal plains along the Mediterranean Sea to the mountainous regions of the Sinai Peninsula. Its landscapes feature desert expanses interspersed with wadis (dry riverbeds), rocky mountains, and occasional oases. The governorate is bordered by the Mediterranean Sea to the north, the Gaza Strip and Israel to the northeast, the Gulf of Aqaba to the east, and the Suez Canal to the west. It serves as a vital corridor between Africa and Asia, with the Suez Canal and the Rafah Border Crossing playing crucial roles in international trade and regional geopolitics",
-      "categories": ["Cultural and historical", "coastal"],
+      "categories": [
+        "Cultural and historical",
+        "coastal"
+      ],
       "places-list": [
         "Al-Farma city",
         "Arish city",
@@ -6646,7 +6647,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/Qena/Qena.jpg",
       "description": "located in Upper Egypt along the eastern bank of the Nile River, is known for its rich history, cultural heritage, and stunning natural landscapes. The governorate's fertile lands and strategic location have made it a significant center of agriculture, trade, and tourism. Qena's historical sites, including ancient temples, tombs, and monuments, offer a glimpse into Egypt's illustrious past, while its bustling markets and traditional festivals reflect the vibrant cultural tapestry of the region.",
-      "categories": ["Cultural and historical", "Religious"],
+      "categories": [
+        "Cultural and historical",
+        "Religious"
+      ],
       "places-list": [
         "Dendera Temple Complex",
         "Kom Ombo",
@@ -6799,7 +6803,10 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/Matrouh/Matrouh.jpg",
       "description": "Matrouh Governorate, located on the Mediterranean coast in northwestern Egypt, is renowned for its stunning beaches, rich cultural heritage, and historical significance. Its pristine coastline, characterized by crystal-clear waters and golden sands, attracts tourists seeking relaxation and recreation. Matrouh's history dates back to ancient times, with archaeological sites and monuments reflecting its diverse past, including Greek and Roman influences. The governorate's vibrant culture, delicious cuisine, and warm hospitality make it a popular destination for travelers exploring Egypt's Mediterranean coast.",
-      "categories": ["coastal", "Cultural and historical"],
+      "categories": [
+        "coastal",
+        "Cultural and historical"
+      ],
       "places-list": [
         "Agiba Beach",
         "Jaz Almaza Beach Resort, Almaza Bay",
@@ -7194,7 +7201,11 @@
       },
       "img": "gs://journey-partnet.appspot.com/All_places/South Sinai/South Sinai.jpg",
       "description": "south Sinai Governorate offers a diverse range of activities and attractions, combining natural beauty, cultural heritage, and recreational opportunities.",
-      "categories": ["Cultural and historical", "coastal", "Religious"],
+      "categories": [
+        "Cultural and historical",
+        "coastal",
+        "Religious"
+      ],
       "places-list": [
         "Ras Mohammed Reserve",
         "Abu Galum Reserve",

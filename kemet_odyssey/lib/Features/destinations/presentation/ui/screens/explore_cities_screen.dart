@@ -65,7 +65,8 @@ class ExploreCitiesScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: buildCitiesAppBar(theme, isDark),
-      body: BuildExploreCitiesBody(theme: theme, isDark: isDark, explorerItems: _explorerItems),
+      body: BuildExploreCitiesBody(
+          theme: theme, isDark: isDark, explorerItems: _explorerItems),
     );
   }
 

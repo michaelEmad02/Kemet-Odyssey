@@ -82,7 +82,7 @@ class MainLayout extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 4),
                     child: Icon(Icons.favorite),
                   ),
-                  label: 'SAVED',
+                  label: 'FAVORITES',
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
