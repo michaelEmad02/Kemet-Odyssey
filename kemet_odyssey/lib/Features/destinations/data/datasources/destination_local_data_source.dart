@@ -1,5 +1,4 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import 'package:kemet_odyssey/core/services/i_services.dart';
 import 'package:kemet_odyssey/features/destinations/data/models/city_model.dart';
 import 'package:kemet_odyssey/features/destinations/data/models/place_model.dart';
 
@@ -9,12 +8,12 @@ abstract class DestinationLocalDataSource {
 }
 
 class DestinationLocalDataSourceImplement extends DestinationLocalDataSource {
+  final IServices iServices;
+
+  DestinationLocalDataSourceImplement({required this.iServices});
   @override
   Future<List<CityModel>> fetchCities() async {
-    final String response =
-        await rootBundle.loadString('lib/Core/assets/data/Egypt.json');
-    final data = await json.decode(response);
-    final List<dynamic> citiesJson = data['cities'];
+    final List<dynamic> citiesJson = await iServices.get(endPoint: "cities");
     return citiesJson.map((json) => CityModel.fromJsonData(json)).toList();
   }
 

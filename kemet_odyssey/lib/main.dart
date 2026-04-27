@@ -7,7 +7,7 @@ import 'package:kemet_odyssey/core/utils/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupServiceLocator();
+  await setupServiceLocator();
   runApp(
     BlocProvider(
       create: (_) => ThemeCubit(),

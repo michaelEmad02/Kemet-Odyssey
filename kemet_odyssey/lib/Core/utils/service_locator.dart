@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kemet_odyssey/core/services/api_services.dart';
 import 'package:kemet_odyssey/core/services/hive_services.dart';
+import 'package:kemet_odyssey/core/services/json_file_services.dart';
 import 'package:kemet_odyssey/features/destinations/data/datasources/destination_local_data_source.dart';
 import 'package:kemet_odyssey/features/destinations/data/datasources/destination_remote_data_sources.dart';
 import 'package:kemet_odyssey/features/destinations/data/repositories/destinations_repo_impl.dart';
@@ -11,22 +12,25 @@ import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/f
 
 final getIt = GetIt.instance;
 
-void setupServiceLocator() {
+Future<void> setupServiceLocator() async {
+  await HiveServices.init();
+  
   // Services
   getIt.registerLazySingleton<Dio>(() => Dio());
+  getIt.registerLazySingleton<JsonFileServices>(() => JsonFileServices());
   getIt.registerLazySingleton<ApiServices>(() => ApiServices(getIt<Dio>()));
   getIt.registerLazySingleton<HiveServices>(() => HiveServices());
 
   // Data Sources
-  getIt.registerLazySingleton<DestinationLocalDataSource>(
-      () => DestinationLocalDataSourceImplement());
-  getIt.registerLazySingleton<DestinationRemoteDataSources>(
-      () => DestinationRemoteDataSourcesImplement(apiServices: getIt<ApiServices>()));
-
+  getIt.registerLazySingleton<DestinationLocalDataSource>(() =>
+      DestinationLocalDataSourceImplement(
+          iServices: getIt<JsonFileServices>()));
+  getIt.registerLazySingleton<DestinationRemoteDataSources>(() =>
+      DestinationRemoteDataSourcesImplement(iServices: getIt<ApiServices>()));
 
   // Repositories
-  getIt.registerLazySingleton<DestinationsRepo>(
-      () => DestinationsRepoImpl(localDataSource: getIt<DestinationLocalDataSource>()));
+  getIt.registerLazySingleton<DestinationsRepo>(() => DestinationsRepoImpl(
+      localDataSource: getIt<DestinationLocalDataSource>()));
 
   // Use Cases
   getIt.registerLazySingleton<GetCitiesUseCase>(
@@ -36,4 +40,3 @@ void setupServiceLocator() {
   getIt.registerFactory<FetchDestinationsDataCubit>(
       () => FetchDestinationsDataCubit(getIt<GetCitiesUseCase>()));
 }
-
