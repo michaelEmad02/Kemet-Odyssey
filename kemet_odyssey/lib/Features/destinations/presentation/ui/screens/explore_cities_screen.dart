@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
+import 'package:kemet_odyssey/core/utils/service_locator.dart';
+import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
+import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_destinations_data_cubit.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/widgets/explore_cities/build_explore_cities_body.dart';
 
 class CityExplorerItem {
@@ -19,54 +23,50 @@ class CityExplorerItem {
   });
 }
 
-class ExploreCitiesScreen extends StatelessWidget {
+class ExploreCitiesScreen extends StatefulWidget {
   const ExploreCitiesScreen({super.key});
 
-  static const List<CityExplorerItem> _explorerItems = [
-    CityExplorerItem(
-      title: 'Cairo',
-      subtitle: 'The Triumphant City',
-      imageUrl:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuBxUuOlXXGS3Rxrv28UYMvBXctqUY4y59tun02vldTNnnVpKUB-uLg_VxjHkXpFO-zJYfJOq7nMxugnHmb_mX4LLx02cW3PlvkTXDBvszZYap7ZZZTtmGC7UxXmvTa8CTx2L7iEYlq1Ss_Ddxm1TOFoG3Utp8Invc7Chq_XtvZf4fUgkpJrTRyuHSMFG1c5l5c1hwo0G80onCiURQbElnunBMFTST126m-mCCdWBWCzrLq7n5MiFM5wnG193FiWPU5ladSGGWmQGO8',
-      isFeatured: true,
-    ),
-    CityExplorerItem(
-      title: 'Luxor',
-      subtitle: 'The World\'s Greatest Open-Air Museum',
-      imageUrl:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuBxIJdeRvh0FJUCmyzS0PBYbzhKAgkJ-tFA1eFvsF38OqO0zSJGI3_ZoIIjj9KfrUR9e_cfdg6GUue-W8cbTkMeCq_L73l2Z78A6FHkEx8uX2ElhwDfhjYfIM-9zVm-B5KU0gDXaG4Qta4HxWWJ3QcV8IHkkdAV3PFSHXM2MaWvhrTw4iOsxNvnjYNehWD2y6PhRwEjax3wv417cTnyFBrr8GrgJBvd34H3uxeHR7xN0k-tx38fbEC1sRc46KRFUqWmf3FqBMqb9kI',
-    ),
-    CityExplorerItem(
-      title: 'Aswan',
-      subtitle: 'Serenity of the First Cataract',
-      imageUrl:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDeS5UHXlmzWVXVehps4j4NiD-9OML5601XxKRRCmxqt_S5IEgTTnjDly-40td_0vgKEkKHaFZaPbIQdMykp0aykhfNy_ZsvcLZ-TQd0x5hmsuibktP4pPTGtGsF2QWPcnh2cAlpu_S34VERfb_W5lVGs5R9CDLlcuhONHRdfg9K1tPERpcvS6c7CnyO7Nw7UJU2E3HFU9lgbvS61qnUaMR8To-swHHcSqnFYgzJ7fmWr3RFZ_a__lLWqzIeoP9URJ9N0FYtAXLLh4',
-      icon: Icons.directions_boat,
-    ),
-    CityExplorerItem(
-      title: 'Alexandria',
-      subtitle: 'The Pearl of the Mediterranean',
-      imageUrl:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDquoYs8JLZ_tPqvoVt3Xb-vY2gsNI_evlHKTcEtOM_l1m0lyE6l1zWyyJd7CydOgNrmaCAT2Cx-LcWXi4xrBHs03XBd6fw_lIA3oP3xRO6AiND7Dx903-Ag3Bw2rSKa_Up8VVyGJXTnC5Xm_7lvQRV9czUBkrHa-zrovjz8PXasGZ0iN1ZWS_g8xAIrmY_AW-WKdCp8gsyT0ZmJLdOrQkcLFlHF7KUc1njmdS7k89AQ_VQ_Ror3lHTywyUuXNjozfvF-knPNMlr94',
-    ),
-    CityExplorerItem(
-      title: 'Sharm',
-      subtitle: 'Jewel of the Red Sea',
-      imageUrl:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuC90Fjv5FzWvKlXCUpwqx8ZANUmxDU2L0veNCZ4QB-UmO1vSqstmjeqOcsYuy_9oXqw6H999HYjOlYpRnebtI7bJihqzJJQ3BD8-waQNejDp6cZDGVOKSdwo5KNr23Mdqp4c_drzm0jNbAf3W-ywHaqGzZQ9DuWOSbjCdJv6o3h9eo-4tehfV6W7W6A-amOhkPQOrxrDh5AQ8AcOYzSSO5WExdW5FuAJCCXgULT44RJjpZTnicfqBugO-YOdpZa21NJLZCIeEzu9rI',
-    ),
-  ];
+  @override
+  State<ExploreCitiesScreen> createState() => _ExploreCitiesScreenState();
+}
 
+class _ExploreCitiesScreenState extends State<ExploreCitiesScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: buildCitiesAppBar(theme, isDark),
-      body: BuildExploreCitiesBody(
-          theme: theme, isDark: isDark, explorerItems: _explorerItems),
+    return BlocProvider(
+      create: (context) => getIt<FetchDestinationsDataCubit>()..fetchCitiesData(),
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: buildCitiesAppBar(theme, isDark),
+        body: BlocBuilder<FetchDestinationsDataCubit, FetchDestinationsDataState>(
+          builder: (context, state) {
+            if (state is FetchDestinationsDataLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is FetchDestinationsDataError) {
+              return Center(child: Text(state.errorMessage));
+            } else if (state is FetchDestinationsDataLoaded) {
+              final explorerItems = state.cities.map((city) {
+                return CityExplorerItem(
+                  title: city.name,
+                  subtitle: city.description,
+                  imageUrl: city.imageUrl,
+                  isFeatured: false, // Defaulting to false for now
+                );
+              }).toList();
+
+              return BuildExploreCitiesBody(
+                theme: theme,
+                isDark: isDark,
+                explorerItems: explorerItems,
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
+      ),
     );
   }
 
@@ -116,3 +116,4 @@ class ExploreCitiesScreen extends StatelessWidget {
     );
   }
 }
+

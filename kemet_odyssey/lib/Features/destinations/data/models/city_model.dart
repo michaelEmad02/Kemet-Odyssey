@@ -1,25 +1,28 @@
 import 'package:kemet_odyssey/features/destinations/data/models/location_model.dart';
 import 'package:kemet_odyssey/features/destinations/data/models/place_model.dart';
+import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
 
-class CityModel {
-  final String name;
+class CityModel extends CityEntity {
   final LocationModel location;
   final String imgUrl;
-  final String description;
-  final List<String> categories;
   final List<String> placesNames;
   final List<String> placesDescription;
-  final List<PlaceModel> places;
 
-  CityModel(
-      {required this.name,
-      required this.location,
-      required this.imgUrl,
-      required this.description,
-      required this.categories,
-      required this.placesNames,
-      required this.placesDescription,
-      required this.places});
+  CityModel({
+    required super.name,
+    required this.location,
+    required this.imgUrl,
+    required super.description,
+    required super.categories,
+    required this.placesNames,
+    required this.placesDescription,
+    required super.places,
+  }) : super(
+          imageUrl: imgUrl,
+          latitude: location.latitude,
+          longitude: location.longitude,
+        );
+
 
   factory CityModel.fromJsonData(Map<String, dynamic> data) {
     return CityModel(

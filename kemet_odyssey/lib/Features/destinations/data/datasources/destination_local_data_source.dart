@@ -12,7 +12,7 @@ class DestinationLocalDataSourceImplement extends DestinationLocalDataSource {
   @override
   Future<List<CityModel>> fetchCities() async {
     final String response =
-        await rootBundle.loadString('lib/core/assets/data/Egypt.json');
+        await rootBundle.loadString('lib/Core/assets/data/Egypt.json');
     final data = await json.decode(response);
     final List<dynamic> citiesJson = data['cities'];
     return citiesJson.map((json) => CityModel.fromJsonData(json)).toList();
