@@ -2,17 +2,24 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_destinations_data_cubit.dart';
 
 class BuildHeroSection extends StatelessWidget {
   const BuildHeroSection({
     super.key,
-    required this.theme,
+    required this.theme,required this.cityId,
   });
 
   final ThemeData theme;
+  final int cityId;
 
   @override
   Widget build(BuildContext context) {
+        var city = (context.watch<FetchDestinationsDataCubit>().state
+            as FetchDestinationsDataLoaded)
+        .cities
+        .firstWhere((element) => element.id == cityId);
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.66,
       width: double.infinity,
@@ -21,7 +28,7 @@ class BuildHeroSection extends StatelessWidget {
         children: [
           CachedNetworkImage(
             imageUrl:
-                'https://lh3.googleusercontent.com/aida-public/AB6AXuBj5XyMWI_9c3y5EwHqvQWOq8c8K2UVPtQQKWS7pWaoSkadwWDzuO2HX5rMBuiWaIe0eTAnDYprHTrTaCrpfsDgjImm6eWRaRmqL8xW2prpxfVjxus8CfcbLtbbKy4uwskiA_LFVCNgi7i2qhw5vYZVkGmeFL25Io2ez0RlF9P441KwhCt-vrgUaWkrYQqCW7WYCpAfgs60zv9kE17lalSmNn72Zr2IAdoQ2Sfbo6IiUPSqr4hA0JGngga9RQPxRWD05tNa-DqOSPU',
+                city.imageUrl,
             fit: BoxFit.cover,
           ),
           Container(
@@ -45,7 +52,7 @@ class BuildHeroSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Luxor',
+                  city.name,
                   style: theme.textTheme.displayLarge?.copyWith(
                     fontWeight: FontWeight.w900,
                     shadows: [

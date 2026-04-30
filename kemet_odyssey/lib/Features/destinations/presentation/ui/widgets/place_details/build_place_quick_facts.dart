@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/place_details_screen.dart';
-import 'package:kemet_odyssey/features/destinations/presentation/ui/widgets/place_details/build_place_details_body.dart';
 
 class BuildPlaceQuickFacts extends StatelessWidget {
   const BuildPlaceQuickFacts({
-    super.key,
-    required this.widget,
-  });
+    super.key, required this.theme,
+  }); 
 
-  final BuildPlaceDetailsBody widget;
+  final ThemeData theme;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +14,13 @@ class BuildPlaceQuickFacts extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: widget.theme.colorScheme.surfaceContainerLowest,
+        color: theme.colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(20),
         border: Border(
           top: BorderSide(
-              color: widget.theme.colorScheme.primary.withOpacity(0.25)),
+              color: theme.colorScheme.primary.withOpacity(0.25)),
           left: BorderSide(
-              color: widget.theme.colorScheme.primary.withOpacity(0.25)),
+              color: theme.colorScheme.primary.withOpacity(0.25)),
         ),
         boxShadow: [
           BoxShadow(
@@ -37,8 +35,8 @@ class BuildPlaceQuickFacts extends StatelessWidget {
         children: [
           Text(
             'Quick Facts',
-            style: widget.theme.textTheme.titleLarge?.copyWith(
-              color: widget.theme.colorScheme.primary,
+            style: theme.textTheme.titleLarge?.copyWith(
+              color: theme.colorScheme.primary,
               fontWeight: FontWeight.bold,
             ),
           ),

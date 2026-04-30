@@ -5,6 +5,7 @@ import 'package:kemet_odyssey/features/destinations/data/models/place_model.dart
 abstract class DestinationLocalDataSource {
   Future<List<CityModel>> fetchCities();
   Future<List<PlaceModel>> fetchPlaces({required String cityName});
+    Future<PlaceModel> fetchPlacedetails({required int placeId});
 }
 
 class DestinationLocalDataSourceImplement extends DestinationLocalDataSource {
@@ -21,5 +22,10 @@ class DestinationLocalDataSourceImplement extends DestinationLocalDataSource {
   Future<List<PlaceModel>> fetchPlaces({required String cityName}) {
     // TODO: implement fetchPlaces
     throw UnimplementedError();
+  }
+  
+  @override
+  Future<PlaceModel> fetchPlacedetails({required int placeId}) {
+    return iServices.getPlace(placeId: placeId);
   }
 }

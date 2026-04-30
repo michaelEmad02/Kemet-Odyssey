@@ -4,9 +4,8 @@ import 'package:kemet_odyssey/core/theme/app_colors.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/widgets/city_details/build_city_details_body.dart';
 
 class CityDetailsScreen extends StatelessWidget {
-  final String cityId;
-
   const CityDetailsScreen({super.key, required this.cityId});
+  final int cityId;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,10 @@ class CityDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: buildAppBar(theme, isDark, context),
-      body: BuildCityDetailsBody(theme: theme),
+      body: BuildCityDetailsBody(
+        theme: theme,
+        cityId: cityId,
+      ),
     );
   }
 
@@ -58,4 +60,3 @@ class CityDetailsScreen extends StatelessWidget {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 {
   "cities": [
     {
+      "id": 1,
       "name": "Cairo",
       "location": {
         "latitude": 30.048035022359965,
@@ -647,6 +648,7 @@
       ]
     },
     {
+      "id": 2,
       "name": "Luxor",
       "location": {
         "latitude": 25.685517227001192,
@@ -1222,6 +1224,7 @@
       ]
     },
     {
+      "id": 3,
       "name": "Alexandria",
       "location": {
         "latitude": 31.191782276689345,
@@ -1972,6 +1975,7 @@
       ]
     },
     {
+      "id": 4,
       "name": "Al Minya",
       "location": {
         "latitude": 28.126610074748058,
@@ -2475,6 +2479,7 @@
       ]
     },
     {
+      "id": 5,
       "name": "Aswan",
       "location": {
         "latitude": 24.145030892910196,
@@ -3082,6 +3087,7 @@
       ]
     },
     {
+      "id": 6,
       "name": "Suez",
       "location": {
         "latitude": 29.969297516852563,
@@ -3343,6 +3349,7 @@
       ]
     },
     {
+      "id": 7,
       "name": "new capital",
       "location": {
         "latitude": 30.0277430647467,
@@ -3535,6 +3542,7 @@
       ]
     },
     {
+      "id": 8,
       "name": "Dakahlia",
       "location": {
         "latitude": 31.039850941644527,
@@ -3759,6 +3767,7 @@
       ]
     },
     {
+      "id": 9,
       "name": "The Red Sea",
       "location": {
         "latitude": 27.260380627305263,
@@ -4270,6 +4279,7 @@
       ]
     },
     {
+      "id": 10,
       "name": "Beheira",
       "location": {
         "latitude": 26.82063914871535,
@@ -4496,6 +4506,7 @@
       ]
     },
     {
+      "id": 11,
       "name": "Fayoum",
       "location": {
         "latitude": 29.311201537399878,
@@ -4724,6 +4735,7 @@
       ]
     },
     {
+      "id": 12,
       "name": "Ismailia",
       "location": {
         "latitude": 30.594309110012784,
@@ -4882,6 +4894,7 @@
       ]
     },
     {
+      "id": 13,
       "name": "New Valley",
       "location": {
         "latitude": 24.625253744201252,
@@ -5179,6 +5192,7 @@
       ]
     },
     {
+      "id": 14,
       "name": "Assiut",
       "location": {
         "latitude": 27.17031052144481,
@@ -5404,6 +5418,7 @@
       ]
     },
     {
+      "id": 15,
       "name": "Bani Suef",
       "location": {
         "latitude": 29.083104979377854,
@@ -5633,6 +5648,7 @@
       ]
     },
     {
+      "id": 16,
       "name": "Port Said",
       "location": {
         "latitude": 31.26761993732966,
@@ -5928,6 +5944,7 @@
       ]
     },
     {
+      "id": 17,
       "name": "Damietta",
       "location": {
         "latitude": 31.416691967513668,
@@ -6084,6 +6101,7 @@
       ]
     },
     {
+      "id": 18,
       "name": "sohag",
       "location": {
         "latitude": 26.62999394998814,
@@ -6349,6 +6367,7 @@
       ]
     },
     {
+      "id": 19,
       "name": "North Sinai",
       "location": {
         "latitude": 30.26507473660541,
@@ -6640,6 +6659,7 @@
       ]
     },
     {
+      "id": 20,
       "name": "Qena",
       "location": {
         "latitude": 26.19924107517307,
@@ -6796,6 +6816,7 @@
       ]
     },
     {
+      "id": 21,
       "name": "Matrouh",
       "location": {
         "latitude": 31.48635935342543,
@@ -7194,6 +7215,7 @@
       ]
     },
     {
+      "id": 22,
       "name": "South Sinai",
       "location": {
         "latitude": 29.30965947014309,

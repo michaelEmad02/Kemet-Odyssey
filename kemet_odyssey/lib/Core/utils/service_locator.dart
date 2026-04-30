@@ -8,13 +8,15 @@ import 'package:kemet_odyssey/features/destinations/data/datasources/destination
 import 'package:kemet_odyssey/features/destinations/data/repositories/destinations_repo_impl.dart';
 import 'package:kemet_odyssey/features/destinations/domain/repositories/destinations_repo.dart';
 import 'package:kemet_odyssey/features/destinations/domain/usecases/get_cities_use_case.dart';
+import 'package:kemet_odyssey/features/destinations/domain/usecases/get_place_details_use_case.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_destinations_data_cubit.dart';
+import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_place_details_cubit.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
-  await HiveServices.init();
-  
+  // await HiveServices.init();
+
   // Services
   getIt.registerLazySingleton<Dio>(() => Dio());
   getIt.registerLazySingleton<JsonFileServices>(() => JsonFileServices());
@@ -34,9 +36,25 @@ Future<void> setupServiceLocator() async {
 
   // Use Cases
   getIt.registerLazySingleton<GetCitiesUseCase>(
-      () => GetCitiesUseCase(destinationsRepo: getIt<DestinationsRepo>()));
+    () => GetCitiesUseCase(
+      destinationsRepo: getIt<DestinationsRepo>(),
+    ),
+  );
+  getIt.registerLazySingleton<GetPlaceDetailsUseCase>(
+    () => GetPlaceDetailsUseCase(
+      destinationsRepo: getIt<DestinationsRepo>(),
+    ),
+  );
 
   // Cubits
   getIt.registerFactory<FetchDestinationsDataCubit>(
-      () => FetchDestinationsDataCubit(getIt<GetCitiesUseCase>()));
+    () => FetchDestinationsDataCubit(
+      getIt<GetCitiesUseCase>(),
+    ),
+  );
+  getIt.registerFactory<FetchPlaceDetailsCubit>(
+    () => FetchPlaceDetailsCubit(
+      getIt<GetPlaceDetailsUseCase>(),
+    ),
+  );
 }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 class BuildQuickFacts extends StatelessWidget {
   const BuildQuickFacts({
     super.key,
-    required this.theme,
+    required this.theme, required this.cityId,
   });
 
   final ThemeData theme;
+  final int cityId;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +28,10 @@ class BuildQuickFacts extends StatelessWidget {
               label: 'Timezone',
               value: 'GMT +2'),
           Divider(height: 32),
-          BuildQuickFact(
-              icon: Icons.payments,
-              label: 'Currency',
-              value: 'EGP'),
+          // BuildQuickFact(
+          //     icon: Icons.payments,
+          //     label: 'Currency',
+          //     value: 'EGP'),
         ],
       ),
     );

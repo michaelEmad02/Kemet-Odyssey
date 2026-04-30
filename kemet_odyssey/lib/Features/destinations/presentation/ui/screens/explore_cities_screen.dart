@@ -1,27 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/core/utils/service_locator.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
-import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_destinations_data_cubit.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/widgets/explore_cities/build_explore_cities_body.dart';
-
-class CityExplorerItem {
-  final String title;
-  final String subtitle;
-  final String imageUrl;
-  final IconData? icon;
-  final bool isFeatured;
-
-  const CityExplorerItem({
-    required this.title,
-    required this.subtitle,
-    required this.imageUrl,
-    this.icon,
-    this.isFeatured = false,
-  });
-}
 
 class ExploreCitiesScreen extends StatefulWidget {
   const ExploreCitiesScreen({super.key});
@@ -36,38 +16,13 @@ class _ExploreCitiesScreenState extends State<ExploreCitiesScreen> {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    return BlocProvider(
-      create: (context) => getIt<FetchDestinationsDataCubit>()..fetchCitiesData(),
-      child: Scaffold(
+    return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: buildCitiesAppBar(theme, isDark),
-        body: BlocBuilder<FetchDestinationsDataCubit, FetchDestinationsDataState>(
-          builder: (context, state) {
-            if (state is FetchDestinationsDataLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is FetchDestinationsDataError) {
-              return Center(child: Text(state.errorMessage));
-            } else if (state is FetchDestinationsDataLoaded) {
-              final explorerItems = state.cities.map((city) {
-                return CityExplorerItem(
-                  title: city.name,
-                  subtitle: city.description,
-                  imageUrl: city.imageUrl,
-                  isFeatured: false, // Defaulting to false for now
-                );
-              }).toList();
-
-              return BuildExploreCitiesBody(
-                theme: theme,
-                isDark: isDark,
-                explorerItems: explorerItems,
-              );
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-      ),
-    );
+        body: BuildExploreCitiesBody(
+          theme: theme,
+          isDark: isDark,
+        ));
   }
 
   AppBar buildCitiesAppBar(ThemeData theme, bool isDark) {
@@ -116,4 +71,3 @@ class _ExploreCitiesScreenState extends State<ExploreCitiesScreen> {
     );
   }
 }
-

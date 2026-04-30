@@ -2,11 +2,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
+import 'package:kemet_odyssey/core/utils/service_locator.dart';
+import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_place_details_cubit.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/widgets/place_details/build_place_details_body.dart';
 
 class PlaceDetailsScreen extends StatefulWidget {
-  final String placeId;
+  final int placeId;
 
   const PlaceDetailsScreen({super.key, required this.placeId});
 
@@ -24,8 +27,12 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: _buildAppBar(theme, isDark, context),
-     // bottomNavigationBar: BuildBottomNavBar(theme: theme, isDark: isDark),
-      body: BuildPlaceDetailsBody(theme: theme),
+      // bottomNavigationBar: BuildBottomNavBar(theme: theme, isDark: isDark),
+      body: BlocProvider(
+        create: (context) => getIt<FetchPlaceDetailsCubit>()
+          ..fetchPlaceDetails(id: widget.placeId),
+        child: BuildPlaceDetailsBody(theme: theme),
+      ),
     );
   }
 
@@ -132,38 +139,6 @@ class BuildHorizontalDivider extends StatelessWidget {
   }
 }
 
-class BuildChip extends StatelessWidget {
-  const BuildChip(
-      {super.key,
-      required this.theme,
-      required this.icon,
-      required this.label});
-  final ThemeData theme;
-  final IconData icon;
-  final String label;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-            color: theme.colorScheme.outlineVariant.withOpacity(0.15)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: theme.colorScheme.primary),
-          const SizedBox(width: 4),
-          Text(label,
-              style: theme.textTheme.labelSmall
-                  ?.copyWith(color: theme.colorScheme.primary)),
-        ],
-      ),
-    );
-  }
-}
 
 class BuildFactRow extends StatelessWidget {
   const BuildFactRow(

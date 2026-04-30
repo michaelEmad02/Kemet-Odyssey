@@ -51,7 +51,7 @@ class AppRouter {
         name: 'city_details',
         parentNavigatorKey: rootNavigatorKey,
         pageBuilder: (context, state) {
-          final id = state.pathParameters['id'] ?? 'luxor';
+          int id = int.parse(state.pathParameters['id'] ?? '1');
           return MaterialPage(child: CityDetailsScreen(cityId: id));
         },
       ),
@@ -60,7 +60,7 @@ class AppRouter {
         name: 'place_details',
         parentNavigatorKey: rootNavigatorKey,
         pageBuilder: (context, state) {
-          final id = state.pathParameters['id'] ?? 'karnak';
+          final id = int.parse( state.pathParameters['id'] ?? 'karnak');
           return MaterialPage(child: PlaceDetailsScreen(placeId: id));
         },
       ),

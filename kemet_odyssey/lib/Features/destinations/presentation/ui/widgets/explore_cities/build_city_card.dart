@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/explore_cities_screen.dart';
+import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
 
 class BuildCityCard extends StatelessWidget {
   const BuildCityCard(
@@ -12,7 +12,7 @@ class BuildCityCard extends StatelessWidget {
       required this.item,
       required this.height});
   final Duration delay;
-  final CityExplorerItem item;
+  final CityEntity item;
   final double height;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class BuildCityCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           'city_details',
-          pathParameters: {'id': item.title.toLowerCase().replaceAll(' ', '_')},
+          pathParameters: {'id': item.id.toString()},
         );
       },
       child: Container(
@@ -58,7 +58,7 @@ class BuildCityCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      item.title,
+                      item.name,
                       style: theme.textTheme.headlineMedium?.copyWith(
                         color: AppColors.darkPrimary,
                         fontWeight: FontWeight.bold,
@@ -66,10 +66,12 @@ class BuildCityCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      item.subtitle,
+                      item.description,
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: AppColors.lightOnPrimary.withOpacity(0.8),
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                   ],
                 ),
