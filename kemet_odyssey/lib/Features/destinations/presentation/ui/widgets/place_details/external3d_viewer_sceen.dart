@@ -15,7 +15,7 @@ class _External3DViewerScreenState extends State<External3DViewerScreen> {
   late final WebViewController _controller;
   bool _isLoading = true;
   String? _error;
-
+ final  test = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -45,6 +45,7 @@ class _External3DViewerScreenState extends State<External3DViewerScreen> {
       )
       ..loadRequest(widget.url);
   }
+
 
   void _retry() {
     setState(() {

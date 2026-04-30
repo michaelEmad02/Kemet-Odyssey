@@ -78,10 +78,6 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
           ),
           onPressed: () => setState(() => _isFavorited = !_isFavorited),
         ),
-        IconButton(
-          icon: Icon(Icons.share, color: theme.colorScheme.onSurfaceVariant),
-          onPressed: () {},
-        ),
         const SizedBox(width: 8),
       ],
     );

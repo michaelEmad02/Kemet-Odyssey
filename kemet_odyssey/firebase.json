@@ -1,0 +1,25 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "kemet-odyssey",
+                    "appId": "1:416410080708:android:5fc61389bd86675c990091",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "kemet-odyssey",
+                    "configurations": {
+                        "android": "1:416410080708:android:5fc61389bd86675c990091",
+                        "ios": "1:416410080708:ios:a25d3cd5df8f2131990091",
+                        "macos": "1:416410080708:ios:a25d3cd5df8f2131990091",
+                        "web": "1:416410080708:web:547474f28b16190f990091",
+                        "windows": "1:416410080708:web:cf8ea46e88966932990091"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_destinations_data_cubit.dart';
@@ -8,6 +9,7 @@ import 'package:kemet_odyssey/core/utils/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await setupServiceLocator();
   runApp(
     BlocProvider(
@@ -26,7 +28,8 @@ class KemetOdysseyApp extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, themeMode) {
         return BlocProvider(
-          create: (context) =>  getIt<FetchDestinationsDataCubit>()..fetchCitiesData(),
+          create: (context) =>
+              getIt<FetchDestinationsDataCubit>()..fetchCitiesData(),
           child: MaterialApp.router(
             title: 'Kemet Odyssey',
             debugShowCheckedModeBanner: false,

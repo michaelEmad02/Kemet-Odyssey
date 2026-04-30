@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "416410080708",
+    "project_id": "kemet-odyssey",
+    "storage_bucket": "kemet-odyssey.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416410080708:android:5fc61389bd86675c990091",
+        "android_client_info": {
+          "package_name": "com.example.kemet_odyssey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2T1G3IYUdlZQW0Iq5cduqJumr-BDlOYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

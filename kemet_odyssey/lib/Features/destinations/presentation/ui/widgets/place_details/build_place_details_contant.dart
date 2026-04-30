@@ -175,9 +175,9 @@ class BuildPlaceDetailsContant extends StatelessWidget {
             icon: Icons.confirmation_number_outlined,
             title: 'Ticket Prices',
             items: [
-              MapEntry('Foreign Adult\nGeneral Admission', placeModel.price[0]),
+              MapEntry('Foreign Adult\nGeneral Admission', placeModel.price[1]),
               MapEntry('Foreign Student\nValid Student ID required',
-                  placeModel.price[1]),
+                  placeModel.price[0]),
               // MapEntry('Egyptian National\nWith valid ID', 'EGP 30'),
             ],
             note: null,
