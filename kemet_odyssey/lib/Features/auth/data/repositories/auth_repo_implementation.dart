@@ -66,6 +66,6 @@ class AuthRepoImplementation implements AuthRepo {
 
   @override
   Future<Either<Failure, String>> verifyPhoneNumber(String phone) {
-    return verifyPhoneNumber(phone);
+    return authRemoteDataSource.verifyPhoneNumber(phone);
   }
 }

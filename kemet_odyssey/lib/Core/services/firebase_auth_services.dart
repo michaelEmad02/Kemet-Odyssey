@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:kemet_odyssey/core/services/auth_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -61,9 +60,11 @@ class FirebaseAuthServices implements AuthServices {
   @override
   Future<UserCredential> signInWithPhone(
       {required String verificationID, required String smsCode}) async {
-    var result = PhoneAuthProvider.credential(
-        verificationId: verificationID, smsCode: smsCode);
-    return await firebaseAuth.signInWithCredential(result);
+    final credential = PhoneAuthProvider.credential(
+      verificationId: verificationID,
+      smsCode: smsCode,
+    );
+    return firebaseAuth.signInWithCredential(credential);
   }
 
   @override
@@ -71,8 +72,7 @@ class FirebaseAuthServices implements AuthServices {
       {required String name,
       required String email,
       required String password}) async {
-    var userCredential =
-        await firebaseAuth.createUserWithEmailAndPassword(
+    var userCredential = await firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -81,7 +81,8 @@ class FirebaseAuthServices implements AuthServices {
     return userCredential;
   }
 
-  Future<void> updateDisplayName(String name)async{   // to single Responsibility principle
+  Future<void> updateDisplayName(String name) async {
+    // to single Responsibility principle
     await getCurrentUser()!.updateDisplayName(name);
   }
 
@@ -91,24 +92,26 @@ class FirebaseAuthServices implements AuthServices {
   }
 
   @override
-  Future<String> verifyPhoneNumber(String phone) async{
-        String verificationID = "";
+  Future<String> verifyPhoneNumber(String phone) async {
+    String verificationID = "";
     await firebaseAuth.verifyPhoneNumber(
       phoneNumber: phone,
       verificationCompleted: (phoneAuthCredential) async {
         await firebaseAuth.signInWithCredential(phoneAuthCredential);
       },
       verificationFailed: (error) {
-        debugPrint(error.code);
+        throw error;
       },
       codeSent: (verificationId, forceResendingToken) {
         verificationID = verificationId;
       },
-      codeAutoRetrievalTimeout: (verificationId) {},
+      codeAutoRetrievalTimeout: (verificationId) {
+        verificationID = verificationId;
+      },
     );
     return verificationID;
   }
-  
+
   @override
   bool emailVerfied() {
     return getCurrentUser()!.emailVerified;
