@@ -62,7 +62,7 @@ class _BuildPlaceDetailsBodyState extends State<BuildPlaceDetailsBody> {
                 ),
 
                 BuildPlaceDetailsContant(
-                  placeModel: place,
+                  place: place,
                   today: today,
                 ),
               ],

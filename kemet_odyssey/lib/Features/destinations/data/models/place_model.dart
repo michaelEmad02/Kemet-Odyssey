@@ -3,7 +3,6 @@ import 'package:kemet_odyssey/features/destinations/data/models/operating_schedu
 import 'package:kemet_odyssey/features/destinations/domain/entities/place_entity.dart';
 
 class PlaceModel extends PlaceEntity {
-  final String history;
   final String contactUs;
   PlaceModel({
     required super.id,
@@ -16,7 +15,7 @@ class PlaceModel extends PlaceEntity {
     required super.model3D,
     required super.operatingSchedule,
     required super.price,
-    required this.history,
+    required super.history,
     required this.contactUs,
   });
 

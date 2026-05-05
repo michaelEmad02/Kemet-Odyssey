@@ -25,7 +25,8 @@ class DestinationLocalDataSourceImplement extends DestinationLocalDataSource {
   }
   
   @override
-  Future<PlaceModel> fetchPlacedetails({required int placeId}) {
-    return iServices.getPlace(placeId: placeId);
+  Future<PlaceModel> fetchPlacedetails({required int placeId}) async {
+    final data = await iServices.getPlace(placeId: placeId);
+    return PlaceModel.fromJsonData(data);
   }
 }

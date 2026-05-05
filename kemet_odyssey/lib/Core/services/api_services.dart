@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:kemet_odyssey/core/services/i_services.dart';
-import 'package:kemet_odyssey/features/destinations/data/models/place_model.dart';
 
 class ApiServices implements IServices {
   final Dio _dio;
@@ -14,7 +13,7 @@ class ApiServices implements IServices {
   }
 
   @override
-  Future<PlaceModel> getPlace({required int placeId}) {
+  Future<Map<String, dynamic>> getPlace({required int placeId}) {
     // TODO: implement getPlace
     throw UnimplementedError();
   }

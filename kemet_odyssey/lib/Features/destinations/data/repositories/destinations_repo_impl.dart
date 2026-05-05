@@ -29,7 +29,7 @@ class DestinationsRepoImpl implements DestinationsRepo {
   }
   
   @override
-  Future<Either<Failure, PlaceModel>> getPlaceDetials({required int id}) async {
+  Future<Either<Failure, PlaceEntity>> getPlaceDetials({required int id}) async {
      try {
       final place = await localDataSource.fetchPlacedetails(placeId: id);
       return Right(place);

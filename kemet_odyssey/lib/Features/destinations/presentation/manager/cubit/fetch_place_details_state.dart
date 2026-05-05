@@ -8,7 +8,7 @@ final class FetchPlaceDetailsInitial extends FetchPlaceDetailsState {}
 final class FetchPlaceDetailsLoading extends FetchPlaceDetailsState {}
 
 final class FetchPlaceDetailsLoaded extends FetchPlaceDetailsState {
-  final PlaceModel place;
+  final PlaceEntity place;
 
   FetchPlaceDetailsLoaded({required this.place});
 }

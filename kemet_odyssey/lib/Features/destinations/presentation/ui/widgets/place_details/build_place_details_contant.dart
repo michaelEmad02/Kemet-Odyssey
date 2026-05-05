@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kemet_odyssey/features/destinations/data/models/place_model.dart';
+import 'package:kemet_odyssey/features/destinations/domain/entities/place_entity.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/place_details_read_more_cubit.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/place_details_read_more_state.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/place_details_screen.dart';
@@ -15,10 +15,10 @@ class BuildPlaceDetailsContant extends StatelessWidget {
   const BuildPlaceDetailsContant({
     super.key,
     required this.today,
-    required this.placeModel,
+    required this.place,
   });
 
-  final PlaceModel placeModel;
+  final PlaceEntity place;
   final int today;
 
   @override
@@ -35,7 +35,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
           // ── Rating + Tags Row ───────────────────────────────────
           BuildRatingAndTags(
             theme: theme,
-            category: placeModel.category,
+            category: place.category,
             averageRating: 4.5,
             ratingCount: 12000,
           ).animate().fadeIn(delay: 500.ms),
@@ -44,7 +44,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
 
           // ── Title ───────────────────────────────────────────────
           Text(
-            placeModel.name,
+            place.name,
             style: theme.textTheme.displaySmall?.copyWith(
               fontWeight: FontWeight.bold,
               height: 1.1,
@@ -52,7 +52,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
           ).animate().fadeIn(delay: 400.ms).slideX(begin: 0.1, end: 0),
 
           const SizedBox(height: 30),
-        BuildChip(theme: theme, icon: Icons.architecture, label: placeModel.category),
+        BuildChip(theme: theme, icon: Icons.architecture, label: place.category),
           const SizedBox(height: 20),
 
           // ── Decorative Divider ──────────────────────────────────
@@ -88,7 +88,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '"${placeModel.description}"',
+                      '"${place.description}"',
                       maxLines: state.isDescriptionExpanded ? null : 5,
                       overflow: state.isDescriptionExpanded
                           ? TextOverflow.visible
@@ -125,7 +125,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'History :\n${placeModel.history}',
+                      'History :\n${place.history}',
                       maxLines: state.isHistoryExpanded ? null : 5,
                       overflow: state.isHistoryExpanded
                           ? TextOverflow.visible
@@ -162,10 +162,10 @@ class BuildPlaceDetailsContant extends StatelessWidget {
           // const SizedBox(height: 32),
 
           // ── 3D Reconstruction ──────────────────────────────────
-          if (placeModel.model3D.trim() != "")
+          if (place.model3D.trim() != "")
             Build3DReconstruction(
               theme: theme,
-              image3DUrl: placeModel.model3D,
+              image3DUrl: place.model3D,
             ),
 
           const SizedBox(height: 32),
@@ -175,9 +175,9 @@ class BuildPlaceDetailsContant extends StatelessWidget {
             icon: Icons.confirmation_number_outlined,
             title: 'Ticket Prices',
             items: [
-              MapEntry('Foreign Adult\nGeneral Admission', placeModel.price[1]),
+              MapEntry('Foreign Adult\nGeneral Admission', place.price[1]),
               MapEntry('Foreign Student\nValid Student ID required',
-                  placeModel.price[0]),
+                  place.price[0]),
               // MapEntry('Egyptian National\nWith valid ID', 'EGP 30'),
             ],
             note: null,
@@ -189,7 +189,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
           // ── Operating Schedule ──────────────────────────────────
           BuildOperatingSchedule(
                   theme: theme,
-                  schedule: placeModel.operatingSchedule.operatingSchedule,
+                  schedule: place.operatingSchedule.operatingSchedule,
                   today: today)
               .animate()
               .fadeIn(delay: 1100.ms)
@@ -201,7 +201,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
 
           BuildOpenStreetMap(
             theme: theme,
-            location: placeModel.location,
+            location: place.location,
           )
               .animate()
               .fadeIn(delay: 1175.ms)
@@ -210,7 +210,7 @@ class BuildPlaceDetailsContant extends StatelessWidget {
           const SizedBox(height: 24),
 
           // ── How to Get There ────────────────────────────────────
-          BuildHowToGetThere(theme: theme, location: placeModel.location)
+          BuildHowToGetThere(theme: theme, location: place.location)
               .animate()
               .fadeIn(delay: 1200.ms)
               .slideY(begin: 0.1, end: 0),

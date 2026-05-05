@@ -6,6 +6,7 @@ class PlaceEntity {
   final int id;
   final String name;
   final String description;
+  final String history;
   final String category;
   final LocationModel location;
   final String mainImage;
@@ -18,6 +19,7 @@ class PlaceEntity {
       {required this.id,
       required this.name,
       required this.description,
+      required this.history,
       required this.category,
       required this.location,
       required this.mainImage,
