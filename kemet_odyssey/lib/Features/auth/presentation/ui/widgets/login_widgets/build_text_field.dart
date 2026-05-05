@@ -7,13 +7,14 @@ class BuildTextField extends StatelessWidget {
     required this.theme,
     required this.hintText,
     required this.prefixIcon,
-    required this.obscureText,
+    required this.obscureText, required this.controller,
   });
 
   final ThemeData theme;
   final String hintText;
   final bool obscureText;
   final Icon prefixIcon;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class BuildTextField extends StatelessWidget {
       border:
           Border.all(color: theme.colorScheme.outlineVariant.withOpacity(0.15)),
       child: TextField(
+        controller: controller,
         obscureText: obscureText,
         style: theme.textTheme.bodyLarge,
         decoration: InputDecoration(

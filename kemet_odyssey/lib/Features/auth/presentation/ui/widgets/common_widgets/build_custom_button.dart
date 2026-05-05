@@ -8,14 +8,12 @@ import 'package:kemet_odyssey/core/theme/app_colors.dart';
 class BuildCustomButton extends StatelessWidget {
   const BuildCustomButton(
       {super.key, required this.title, required this.iconData, this.onPressed});
-  final String title;
+  final Widget title;
   final IconData iconData;
   final VoidCallback? onPressed; 
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -26,20 +24,14 @@ class BuildCustomButton extends StatelessWidget {
         ],
       ),
       child: ElevatedButton(
-        onPressed: () => onPressed,
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(double.infinity, 60),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: Colors.white.withOpacity(0.99),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            title,
             const SizedBox(width: 8),
             Icon(iconData,
                 color: Colors.white.withOpacity(0.99), size: 20),

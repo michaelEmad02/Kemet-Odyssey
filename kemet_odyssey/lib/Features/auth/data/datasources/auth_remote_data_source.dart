@@ -70,7 +70,7 @@ class AuthRemoteDataSourceImplementation implements AuthRemoteDataSource {
   @override
   Future<Either<Failure, void>> resetPassword(String emailAddress) async {
     try {
-      final result = authServices.resetPassword(emailAddress);
+      final result = await authServices.resetPassword(emailAddress);
       return Right(result);
     } catch (e) {
       return Left(AuthFailure.fromException(e));

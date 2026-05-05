@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// App-wide theme mode. Use [BlocProvider] above [MaterialApp] and read with
 /// `context.read<ThemeCubit>()` from any route.
 class ThemeCubit extends Cubit<ThemeMode> {
-  ThemeCubit([ThemeMode initial = ThemeMode.system]) : super(initial);
+  ThemeCubit([super.initial = ThemeMode.system]);
 
   void setLight() => emit(ThemeMode.light);
 

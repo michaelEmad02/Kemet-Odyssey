@@ -24,7 +24,7 @@ class SignInButton extends StatelessWidget {
       border:
           Border.all(color: theme.colorScheme.outlineVariant.withOpacity(0.1)),
       child: InkWell(
-        onTap: () => context.pushNamed('register'),
+        onTap: () => context.pushNamed('login'),
         borderRadius: BorderRadius.circular(15),
         child: SizedBox(
           width: double.infinity,

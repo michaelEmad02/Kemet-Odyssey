@@ -107,11 +107,7 @@ class BuildRegister extends StatelessWidget {
           WidgetSpan(
             child: GestureDetector(
               onTap: () {
-                if (context.canPop()) {
-                  context.pop();
-                } else {
-                  context.goNamed('register');
-                }
+                context.pushNamed('register');
               },
               child: Text(
                 'Create Account',

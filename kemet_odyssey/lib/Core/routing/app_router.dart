@@ -16,7 +16,7 @@ final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
-    initialLocation: '/',
+    initialLocation: '/splash',
     routes: [
       GoRoute(
         path: '/splash',
@@ -72,7 +72,7 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/',
+                path: '/home',
                 name: 'home',
                 pageBuilder: (context, state) =>
                     const MaterialPage(child: HomeScreen()),
