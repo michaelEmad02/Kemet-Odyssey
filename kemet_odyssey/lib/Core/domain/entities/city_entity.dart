@@ -1,5 +1,5 @@
-import 'package:kemet_odyssey/features/destinations/data/models/location_model.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/place_entity.dart';
+import 'package:kemet_odyssey/core/data/models/location_model.dart';
+import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
 
 class CityEntity {
   final int id;

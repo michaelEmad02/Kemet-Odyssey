@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/place_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/place_details_read_more_cubit.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/place_details_read_more_state.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/ui/screens/place_details_screen.dart';
@@ -32,56 +32,59 @@ class BuildPlaceDetailsContant extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          // ── Rating + Tags Row ───────────────────────────────────
-          BuildRatingAndTags(
-            theme: theme,
-            category: place.category,
-            averageRating: 4.5,
-            ratingCount: 12000,
-          ).animate().fadeIn(delay: 500.ms),
+            // ── Rating + Tags Row ───────────────────────────────────
+            BuildRatingAndTags(
+              theme: theme,
+              category: place.category,
+              averageRating: 4.5,
+              ratingCount: 12000,
+            ).animate().fadeIn(delay: 500.ms),
 
-          const SizedBox(height: 20,),
-
-          // ── Title ───────────────────────────────────────────────
-          Text(
-            place.name,
-            style: theme.textTheme.displaySmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              height: 1.1,
+            const SizedBox(
+              height: 20,
             ),
-          ).animate().fadeIn(delay: 400.ms).slideX(begin: 0.1, end: 0),
 
-          const SizedBox(height: 30),
-        BuildChip(theme: theme, icon: Icons.architecture, label: place.category),
-          const SizedBox(height: 20),
-
-          // ── Decorative Divider ──────────────────────────────────
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              BuildHorizontalDivider(theme: theme),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.architecture,
-                        color: theme.colorScheme.primaryContainer),
-                    const SizedBox(width: 12),
-                    Icon(Icons.history_edu,
-                        color: theme.colorScheme.primaryContainer),
-                    const SizedBox(width: 12),
-                    Icon(Icons.temple_hindu,
-                        color: theme.colorScheme.primaryContainer),
-                  ],
-                ),
+            // ── Title ───────────────────────────────────────────────
+            Text(
+              place.name,
+              style: theme.textTheme.displaySmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                height: 1.1,
               ),
-              BuildHorizontalDivider(theme: theme),
-            ],
-          ).animate().fadeIn(delay: 600.ms),
+            ).animate().fadeIn(delay: 400.ms).slideX(begin: 0.1, end: 0),
 
-          const SizedBox(height: 32),
+            const SizedBox(height: 30),
+            BuildChip(
+                theme: theme, icon: Icons.architecture, label: place.category),
+            const SizedBox(height: 20),
 
-          // ── Editorial Quote ─────────────────────────────────────
+            // ── Decorative Divider ──────────────────────────────────
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                BuildHorizontalDivider(theme: theme),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.architecture,
+                          color: theme.colorScheme.primaryContainer),
+                      const SizedBox(width: 12),
+                      Icon(Icons.history_edu,
+                          color: theme.colorScheme.primaryContainer),
+                      const SizedBox(width: 12),
+                      Icon(Icons.temple_hindu,
+                          color: theme.colorScheme.primaryContainer),
+                    ],
+                  ),
+                ),
+                BuildHorizontalDivider(theme: theme),
+              ],
+            ).animate().fadeIn(delay: 600.ms),
+
+            const SizedBox(height: 32),
+
+            // ── Editorial Quote ─────────────────────────────────────
             BlocBuilder<PlaceDetailsReadMoreCubit, PlaceDetailsReadMoreState>(
               builder: (context, state) {
                 return Column(
@@ -151,71 +154,68 @@ class BuildPlaceDetailsContant extends StatelessWidget {
               },
             ).animate().fadeIn(delay: 800.ms),
 
-          const SizedBox(height: 32),
+            const SizedBox(height: 32),
 
-          // ── Quick Facts ─────────────────────────────────────────
-          // BuildPlaceQuickFacts(theme: theme)
-          //     .animate()
-          //     .fadeIn(delay: 900.ms)
-          //     .slideY(begin: 0.1, end: 0),
+            // ── Quick Facts ─────────────────────────────────────────
+            // BuildPlaceQuickFacts(theme: theme)
+            //     .animate()
+            //     .fadeIn(delay: 900.ms)
+            //     .slideY(begin: 0.1, end: 0),
 
-          // const SizedBox(height: 32),
+            // const SizedBox(height: 32),
 
-          // ── 3D Reconstruction ──────────────────────────────────
-          if (place.model3D.trim() != "")
-            Build3DReconstruction(
-              theme: theme,
-              image3DUrl: place.model3D,
+            // ── 3D Reconstruction ──────────────────────────────────
+            if (place.model3D.trim() != "")
+              Build3DReconstruction(
+                theme: theme,
+                image3DUrl: place.model3D,
+              ),
+
+            const SizedBox(height: 32),
+
+            // ── Ticket Prices ───────────────────────────────────────
+            BuildInfoCard(
+              icon: Icons.confirmation_number_outlined,
+              title: 'Ticket Prices',
+              items: [
+                MapEntry('Foreign Adult\nGeneral Admission', place.price[1]),
+                MapEntry('Foreign Student\nValid Student ID required',
+                    place.price[0]),
+                // MapEntry('Egyptian National\nWith valid ID', 'EGP 30'),
+              ],
+              note: null,
+              delay: 1000.ms,
             ),
 
-          const SizedBox(height: 32),
+            const SizedBox(height: 24),
 
-          // ── Ticket Prices ───────────────────────────────────────
-          BuildInfoCard(
-            icon: Icons.confirmation_number_outlined,
-            title: 'Ticket Prices',
-            items: [
-              MapEntry('Foreign Adult\nGeneral Admission', place.price[1]),
-              MapEntry('Foreign Student\nValid Student ID required',
-                  place.price[0]),
-              // MapEntry('Egyptian National\nWith valid ID', 'EGP 30'),
-            ],
-            note: null,
-            delay: 1000.ms,
-          ),
+            // ── Operating Schedule ──────────────────────────────────
+            BuildOperatingSchedule(
+                    theme: theme,
+                    schedule: place.operatingSchedule.operatingSchedule,
+                    today: today)
+                .animate()
+                .fadeIn(delay: 1100.ms)
+                .slideY(begin: 0.1, end: 0),
 
-          const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-          // ── Operating Schedule ──────────────────────────────────
-          BuildOperatingSchedule(
-                  theme: theme,
-                  schedule: place.operatingSchedule.operatingSchedule,
-                  today: today)
-              .animate()
-              .fadeIn(delay: 1100.ms)
-              .slideY(begin: 0.1, end: 0),
+            const SizedBox(height: 24),
 
-          const SizedBox(height: 24),
+            BuildOpenStreetMap(
+              theme: theme,
+              location: place.location,
+            ).animate().fadeIn(delay: 1175.ms).slideY(begin: 0.1, end: 0),
 
-          const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-          BuildOpenStreetMap(
-            theme: theme,
-            location: place.location,
-          )
-              .animate()
-              .fadeIn(delay: 1175.ms)
-              .slideY(begin: 0.1, end: 0),
+            // ── How to Get There ────────────────────────────────────
+            BuildHowToGetThere(theme: theme, location: place.location)
+                .animate()
+                .fadeIn(delay: 1200.ms)
+                .slideY(begin: 0.1, end: 0),
 
-          const SizedBox(height: 24),
-
-          // ── How to Get There ────────────────────────────────────
-          BuildHowToGetThere(theme: theme, location: place.location)
-              .animate()
-              .fadeIn(delay: 1200.ms)
-              .slideY(begin: 0.1, end: 0),
-
-          const SizedBox(height: 80),
+            const SizedBox(height: 80),
           ],
         ),
       ),

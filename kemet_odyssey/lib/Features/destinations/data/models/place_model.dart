@@ -1,6 +1,6 @@
-import 'package:kemet_odyssey/features/destinations/data/models/location_model.dart';
-import 'package:kemet_odyssey/features/destinations/data/models/operating_schedule.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/place_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
+import 'package:kemet_odyssey/core/data/models/location_model.dart';
+import 'package:kemet_odyssey/core/data/models/operating_schedule.dart';
 
 class PlaceModel extends PlaceEntity {
   final String contactUs;

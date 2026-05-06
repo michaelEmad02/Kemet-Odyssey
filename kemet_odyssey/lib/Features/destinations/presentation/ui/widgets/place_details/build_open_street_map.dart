@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/features/destinations/data/models/location_model.dart';
+import 'package:kemet_odyssey/core/data/models/location_model.dart';
 import 'package:latlong2/latlong.dart';
 
 class BuildOpenStreetMap extends StatelessWidget {

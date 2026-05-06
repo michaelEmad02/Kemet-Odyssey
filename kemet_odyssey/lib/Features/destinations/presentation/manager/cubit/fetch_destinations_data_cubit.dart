@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
 import 'package:kemet_odyssey/features/destinations/domain/usecases/get_cities_use_case.dart';
 
 part 'fetch_destinations_data_state.dart';

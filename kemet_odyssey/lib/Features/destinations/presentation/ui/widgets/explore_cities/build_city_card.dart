@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
 
 class BuildCityCard extends StatelessWidget {
   const BuildCityCard(

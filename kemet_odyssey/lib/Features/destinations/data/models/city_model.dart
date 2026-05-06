@@ -1,6 +1,6 @@
-import 'package:kemet_odyssey/features/destinations/data/models/location_model.dart';
+import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
+import 'package:kemet_odyssey/core/data/models/location_model.dart';
 import 'package:kemet_odyssey/features/destinations/data/models/place_model.dart';
-import 'package:kemet_odyssey/features/destinations/domain/entities/city_entity.dart';
 
 class CityModel extends CityEntity {
   final List<String> placesNames;
