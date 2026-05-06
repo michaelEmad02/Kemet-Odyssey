@@ -1,4 +1,6 @@
 
+import 'package:kemet_odyssey/features/home/domain/entities/plan_day_entity.dart';
+
 class PlanEntity {
   final String id;
   final String duration; // number of days
@@ -10,7 +12,7 @@ class PlanEntity {
   final int subscribers;
   final String imageUrl;
   final bool isPremium;
-
+  final List<PlanDayEntity> planDays;
 
   const PlanEntity({
     this.id = '1',
@@ -23,5 +25,6 @@ class PlanEntity {
     this.subscribers = 0,
     this.imageUrl = '',
     this.isPremium = false,
+    required this.planDays,
   });
 }
