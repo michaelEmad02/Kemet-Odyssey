@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/city_entity.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/place_entity.dart';
 import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/build_cities_list_view.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/build_places_list_view.dart';

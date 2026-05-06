@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/place_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
 
 class PlaceCard extends StatelessWidget {
   final PlaceEntity place;
@@ -62,8 +62,7 @@ class BuildCardBody extends StatelessWidget {
         AspectRatio(
           aspectRatio: 3.4 / 3,
           child: ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(15)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
             child: CachedNetworkImage(
               imageUrl: place.mainImage,
               fit: BoxFit.cover,
@@ -71,7 +70,7 @@ class BuildCardBody extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(16,16,16,10),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -91,7 +90,9 @@ class BuildCardBody extends StatelessWidget {
                   fontFamily: 'Noto Serif',
                 ),
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 5,
+              ),
               Text(
                 place.description,
                 style: theme.textTheme.titleSmall?.copyWith(

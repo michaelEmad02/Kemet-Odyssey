@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/city_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
 
 class CityCard extends StatelessWidget {
   final CityEntity city;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/place_entity.dart';
+import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/place_card.dart';
 
 class BuildPlacesListView extends StatelessWidget {
