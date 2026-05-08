@@ -11,7 +11,7 @@ class FetchTopPlacesBloc
   final FetchTopPalcesUseCase fetchTopPalcesUseCase;
   FetchTopPlacesBloc(this.fetchTopPalcesUseCase)
       : super(FetchTopPlacesInitial()) {
-    on<FetchTopPlacesEvent>((event, emit) async {
+    on<FetchTopPlaces>((event, emit) async {
       emit(FetchTopPlacesLoading());
       var result = await fetchTopPalcesUseCase.execute();
       result.fold(

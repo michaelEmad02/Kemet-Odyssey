@@ -17,7 +17,7 @@ class FirebaseServices implements IServices {
         .orderBy('averageRating', descending: true)
         .limit(limit)
         .get();
-    return snapshot.docs;
+    return snapshot.docs.map((doc) => doc.data()).toList();
   }
 
   // ── IServices stubs (not used by Firestore path) ──────────────────────────

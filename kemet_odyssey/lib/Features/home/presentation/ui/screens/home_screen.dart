@@ -1,79 +1,17 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
-import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
 import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_day_entity.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_places_entity.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kemet_odyssey/core/utils/service_locator.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_cities_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_places_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_plans_bloc.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/home_body.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static final List<CityEntity> _cities = [];
-
-  static final List<PlaceEntity> _places = [];
-
-  static const List<PlanEntity> _plans = [
-    PlanEntity(
-      id: '1',
-      duration: '7 DAYS',
-      city: 'Cairo',
-      categories: ['Archeologist', 'tsrtd', 'sfdsg', 'sdgsdgsdgsdg'],
-      imageUrl: "",
-      isPremium: false,
-      price: 0,
-      averageRating: 4,
-      ratingCount: 50,
-      subscribers: 0,
-      planDays: [
-        PlanDayEntity(
-          dayName: 'Day 1',
-          dayDate: '2022-01-01',
-          startTime: '09:00',
-          endTime: '17:00',
-          planPlaces: [
-            PlanPlacesEntity(
-              placeId: 1,
-              placeNumber: 1,
-              startTime: '09:00',
-              endTime: '17:00',
-            ),
-          ],
-        ),
-      ],
-    ),
-    PlanEntity(
-      id: '2',
-      duration: '4 DAYS',
-      city: 'Giza',
-      categories: ['tejkdsjhsdu'],
-      imageUrl: "",
-      isPremium: false,
-      price: 0,
-      averageRating: 3.9,
-      ratingCount: 70,
-      subscribers: 0,
-      planDays: [
-        PlanDayEntity(
-          dayName: 'Day 1',
-          dayDate: '2022-01-01',
-          startTime: '09:00',
-          endTime: '17:00',
-          planPlaces: [
-            PlanPlacesEntity(
-              placeId: 1,
-              placeNumber: 1,
-              startTime: '09:00',
-              endTime: '17:00',
-            ),
-          ],
-        ),
-      ],
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -87,26 +25,27 @@ class HomeScreen extends StatelessWidget {
     // final placeCardWidth = (screenWidth * 0.60).clamp(240.0, 350.0);
     // final planCardWidth = (screenWidth * 0.85).clamp(320.0, 450.0);
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: buildAppBar(theme, isDark),
-      // floatingActionButton: Padding(
-      //   padding: const EdgeInsets.only(bottom: 24.0), // Above bottom nav
-      //   child: FloatingActionButton(
-      //     onPressed: () {},
-      //     backgroundColor:
-      //         isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
-      //     foregroundColor: AppColors.darkOnPrimary, // Always dark for gold
-      //     elevation: 8,
-      //     child: const Icon(Icons.add),
-      //   ),
-      // ),
-      body: HomeBody(
-        theme: theme,
-        isDark: isDark,
-        cities: _cities,
-        places: _places,
-        plans: _plans,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              getIt<FetchTopCitiesBloc>()..add(FetchTopCities()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<FetchTopPlacesBloc>()..add(FetchTopPlaces()),
+        ),
+        BlocProvider(
+          create: (context) => getIt<FetchTopPlansBloc>()..add(FetchTopPlans()),
+        ),
+      ],
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: buildAppBar(theme, isDark),
+        body: HomeBody(
+          theme: theme,
+          isDark: isDark,
+        ),
       ),
     );
   }

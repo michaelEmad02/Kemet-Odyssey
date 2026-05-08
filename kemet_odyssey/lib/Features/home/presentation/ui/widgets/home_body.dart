@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
-import 'package:kemet_odyssey/core/domain/entities/place_entity.dart';
-import 'package:kemet_odyssey/core/theme/app_colors.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/build_cities_list_view.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/build_places_list_view.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/build_plans_list_view.dart';
+import 'package:kemet_odyssey/features/home/presentation/ui/widgets/build_shimmer_list.dart';
+import 'package:kemet_odyssey/features/home/presentation/ui/widgets/hero_section.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/section_header.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_cities_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_places_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_plans_bloc.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({
     super.key,
     required this.theme,
     required this.isDark,
-    required List<CityEntity> cities,
-    required List<PlaceEntity> places,
-    required List<PlanEntity> plans,
-  })  : _cities = cities,
-        _places = places,
-        _plans = plans;
+  });
 
   final ThemeData theme;
   final bool isDark;
-  final List<CityEntity> _cities;
-  final List<PlaceEntity> _places;
-  final List<PlanEntity> _plans;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +47,21 @@ class HomeBody extends StatelessWidget {
                     context.pushNamed('exploreCities');
                   },
                 ),
-                BuildCitiesListView(
-                    cities: _cities,),
+                BlocBuilder<FetchTopCitiesBloc, FetchTopCitiesState>(
+                  builder: (context, state) {
+                    if (state is FetchTopCitiesLoading) {
+                      return BuildShimmerList(
+                          isDark: isDark,
+                          context: context,
+                          height: MediaQuery.of(context).size.height * .40);
+                    } else if (state is FetchTopCitiesLoaded) {
+                      return BuildCitiesListView(cities: state.topCities);
+                    } else if (state is FetchTopCitiesFailure) {
+                      return _buildErrorWidget(state.errorMessage);
+                    }
+                    return const SizedBox();
+                  },
+                ),
 
                 const SizedBox(height: 25),
 
@@ -69,8 +76,22 @@ class HomeBody extends StatelessWidget {
                         subtitle: 'Trending destinations for modern explorers',
                         animationDelay: Duration(milliseconds: 800),
                       ).animate().flip(delay: 400.ms),
-                      BuildPlacesListView(
-                          places: _places),
+                      BlocBuilder<FetchTopPlacesBloc, FetchTopPlacesState>(
+                        builder: (context, state) {
+                          if (state is FetchTopPlacesLoading) {
+                            return BuildShimmerList(
+                                isDark: isDark,
+                                context: context,
+                                height:
+                                    MediaQuery.of(context).size.height * .40);
+                          } else if (state is FetchTopPlacesLoaded) {
+                            return BuildPlacesListView(places: state.topPlaces);
+                          } else if (state is FetchTopPlacesFailure) {
+                            return _buildErrorWidget(state.errorMessage);
+                          }
+                          return const SizedBox();
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -83,7 +104,26 @@ class HomeBody extends StatelessWidget {
                   subtitle: 'Itineraries curated by historical experts',
                   animationDelay: Duration(milliseconds: 1200),
                 ),
-                BuildPlansListView(plans: _plans),
+                BlocBuilder<FetchTopPlansBloc, FetchTopPlansState>(
+                  builder: (context, state) {
+                    if (state is FetchTopPlansLoading) {
+                      return BuildShimmerList(
+                          isDark: isDark,
+                          context: context,
+                          height: MediaQuery.of(context).size.height * .37);
+                    } else if (state is FetchTopPlansLoaded) {
+                      if (state.topPlans.isEmpty) {
+                        return const Center(
+                          child: Text('No plans found'),
+                        );
+                      }
+                      return BuildPlansListView(plans: state.topPlans);
+                    } else if (state is FetchTopPlansFailure) {
+                      return _buildErrorWidget(state.errorMessage);
+                    }
+                    return const SizedBox();
+                  },
+                ),
                 const SizedBox(height: 100), // Bottom padding
               ],
             ),
@@ -92,42 +132,24 @@ class HomeBody extends StatelessWidget {
       ],
     );
   }
-}
 
-class HeroSection extends StatelessWidget {
-  const HeroSection({
-    super.key,
-    required this.theme,
-    required this.isDark,
-  });
-
-  final ThemeData theme;
-  final bool isDark;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'The Land of Kemet',
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
-              letterSpacing: 3.0,
-              fontWeight: FontWeight.bold,
+  Widget _buildErrorWidget(String message) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Icon(Icons.error_outline, color: theme.colorScheme.error, size: 40),
+            const SizedBox(height: 10),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.error,
+              ),
             ),
-          ).animate().fadeIn(delay: 400.ms).slideX(begin: 0.1, end: 0),
-          const SizedBox(height: 8),
-          Text(
-            'Your Odyssey\nBegins Here.',
-            style: theme.textTheme.displaySmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              height: 1.1,
-            ),
-          ).animate().fadeIn(delay: 400.ms).slideX(begin: 0.1, end: 0),
-        ],
+          ],
+        ),
       ),
     );
   }

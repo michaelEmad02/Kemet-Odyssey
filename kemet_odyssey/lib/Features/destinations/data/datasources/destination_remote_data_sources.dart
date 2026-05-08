@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:kemet_odyssey/core/errors/failures.dart';
+import 'package:kemet_odyssey/core/errors/server_failure.dart';
 import 'package:kemet_odyssey/core/services/i_services.dart';
 import 'package:kemet_odyssey/features/destinations/data/models/city_model.dart';
 

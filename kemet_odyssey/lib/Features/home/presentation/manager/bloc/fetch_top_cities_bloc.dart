@@ -11,7 +11,7 @@ class FetchTopCitiesBloc
   final FetchTopCitiesUseCase fetchTopCitiesUseCase;
   FetchTopCitiesBloc(this.fetchTopCitiesUseCase)
       : super(FetchTopCitiesInitial()) {
-    on<FetchTopCitiesEvent>((event, emit) async {
+    on<FetchTopCities>((event, emit) async {
       emit(FetchTopCitiesLoading());
       var result = await fetchTopCitiesUseCase.execute();
       result.fold(

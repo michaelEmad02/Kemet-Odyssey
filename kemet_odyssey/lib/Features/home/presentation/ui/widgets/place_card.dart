@@ -57,7 +57,8 @@ class BuildCardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AspectRatio(
           aspectRatio: 3.4 / 3,
@@ -73,6 +74,7 @@ class BuildCardBody extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
                 place.category,
@@ -88,20 +90,22 @@ class BuildCardBody extends StatelessWidget {
                 style: theme.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Noto Serif',
+                  overflow: TextOverflow.ellipsis,
                 ),
+                maxLines: 2,
               ),
               const SizedBox(
                 height: 5,
               ),
-              Text(
-                place.description,
-                style: theme.textTheme.titleSmall?.copyWith(
-                  color: theme.textTheme.titleSmall?.color?.withOpacity(0.8),
-                  fontWeight: FontWeight.w200,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
+              // Text(
+              //   place.description,
+              //   style: theme.textTheme.titleSmall?.copyWith(
+              //     color: theme.textTheme.titleSmall?.color?.withOpacity(0.8),
+              //     fontWeight: FontWeight.w200,
+              //   ),
+              //   maxLines: 2,
+              //   overflow: TextOverflow.ellipsis,
+              // ),
             ],
           ),
         ),

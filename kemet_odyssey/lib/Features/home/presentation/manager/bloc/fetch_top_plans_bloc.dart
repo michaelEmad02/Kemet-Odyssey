@@ -9,7 +9,7 @@ part 'fetch_top_plans_state.dart';
 class FetchTopPlansBloc extends Bloc<FetchTopPlansEvent, FetchTopPlansState> {
   final FetchTopPlanUseCase fetchTopPlanUseCase;
   FetchTopPlansBloc(this.fetchTopPlanUseCase) : super(FetchTopPlansInitial()) {
-    on<FetchTopPlansEvent>((event, emit) async {
+    on<FetchTopPlans>((event, emit) async {
       emit(FetchTopPlansLoading());
       final result = await fetchTopPlanUseCase.execute();
       result.fold(

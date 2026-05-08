@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kemet_odyssey/core/services/api_services.dart';
 import 'package:kemet_odyssey/core/services/auth_services.dart';
 import 'package:kemet_odyssey/core/services/firebase_auth_services.dart';
+import 'package:kemet_odyssey/core/services/firebase_services.dart';
 import 'package:kemet_odyssey/core/services/hive_services.dart';
 import 'package:kemet_odyssey/core/services/json_file_services.dart';
 import 'package:kemet_odyssey/features/auth/data/datasources/auth_remote_data_source.dart';
@@ -23,6 +25,16 @@ import 'package:kemet_odyssey/features/destinations/domain/usecases/get_cities_u
 import 'package:kemet_odyssey/features/destinations/domain/usecases/get_place_details_use_case.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_destinations_data_cubit.dart';
 import 'package:kemet_odyssey/features/destinations/presentation/manager/cubit/fetch_place_details_cubit.dart';
+import 'package:kemet_odyssey/features/home/data/datasources/home_local_data_source.dart';
+import 'package:kemet_odyssey/features/home/data/datasources/home_remote_data_source.dart';
+import 'package:kemet_odyssey/features/home/data/repositories/home_repo_implemenation.dart';
+import 'package:kemet_odyssey/features/home/domain/repositories/home_repo.dart';
+import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_cities_use_case.dart';
+import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_palces_use_case.dart';
+import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_plan_use_case.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_cities_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_places_bloc.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_plans_bloc.dart';
 
 final getIt = GetIt.instance;
 
@@ -33,6 +45,8 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<Dio>(() => Dio());
   getIt.registerLazySingleton<JsonFileServices>(() => JsonFileServices());
   getIt.registerLazySingleton<ApiServices>(() => ApiServices(getIt<Dio>()));
+  getIt.registerLazySingleton<FirebaseServices>(
+      () => FirebaseServices(firestore: FirebaseFirestore.instance));
   getIt.registerLazySingleton<HiveServices>(() => HiveServices());
   getIt.registerLazySingleton<AuthServices>(
       () => FirebaseAuthServices(firebaseAuth: FirebaseAuth.instance));
@@ -49,6 +63,11 @@ Future<void> setupServiceLocator() async {
         AuthRemoteDataSourceImplementation(authServices: getIt<AuthServices>()),
   );
 
+  getIt.registerLazySingleton<HomeLocalDataSource>(() =>
+      HomeLocalDataSourceImplementation(iServices: getIt<JsonFileServices>()));
+  getIt.registerLazySingleton<HomeRemoteDataSource>(() =>
+      HomeRemoteDataSourceImplementation(iServices: getIt<FirebaseServices>()));
+
   // Repositories
   getIt.registerLazySingleton<DestinationsRepo>(() => DestinationsRepoImpl(
       localDataSource: getIt<DestinationLocalDataSource>()));
@@ -57,6 +76,10 @@ Future<void> setupServiceLocator() async {
     () => AuthRepoImplementation(
         authRemoteDataSource: getIt<AuthRemoteDataSource>()),
   );
+
+  getIt.registerLazySingleton<HomeRepo>(() => HomeRepoImplemenation(
+      homeLocalDataSource: getIt<HomeLocalDataSource>(),
+      homeRemoteDataSource: getIt<HomeRemoteDataSource>()));
 
   // Use Cases
   getIt.registerLazySingleton<GetCitiesUseCase>(
@@ -86,6 +109,13 @@ Future<void> setupServiceLocator() async {
     () => VerifyEmailUseCase(authRepo: getIt<AuthRepo>()),
   );
 
+  getIt.registerLazySingleton<FetchTopCitiesUseCase>(
+      () => FetchTopCitiesUseCase(homeRepo: getIt<HomeRepo>()));
+  getIt.registerLazySingleton<FetchTopPalcesUseCase>(
+      () => FetchTopPalcesUseCase(homeRepo: getIt<HomeRepo>()));
+  getIt.registerLazySingleton<FetchTopPlanUseCase>(
+      () => FetchTopPlanUseCase(homeRepo: getIt<HomeRepo>()));
+
   // Cubits
   getIt.registerFactory<FetchDestinationsDataCubit>(
     () => FetchDestinationsDataCubit(
@@ -105,4 +135,11 @@ Future<void> setupServiceLocator() async {
         getIt<VerifyEmailUseCase>(),
         getIt<ResetPasswordUseCase>()),
   );
+
+  getIt.registerFactory<FetchTopCitiesBloc>(
+      () => FetchTopCitiesBloc(getIt<FetchTopCitiesUseCase>()));
+  getIt.registerFactory<FetchTopPlacesBloc>(
+      () => FetchTopPlacesBloc(getIt<FetchTopPalcesUseCase>()));
+  getIt.registerFactory<FetchTopPlansBloc>(
+      () => FetchTopPlansBloc(getIt<FetchTopPlanUseCase>()));
 }
