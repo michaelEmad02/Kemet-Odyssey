@@ -56,60 +56,69 @@ class BuildCardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        AspectRatio(
-          aspectRatio: 3.4 / 3,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-            child: CachedNetworkImage(
-              imageUrl: place.mainImage,
-              fit: BoxFit.cover,
+    return InkWell(
+      onTap: () {
+        context.pushNamed(
+          'place_details',
+          pathParameters: {'id': place.id.toString()},
+        );
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          AspectRatio(
+            aspectRatio: 3.4 / 3,
+            child: ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(15)),
+              child: CachedNetworkImage(
+                imageUrl: place.mainImage,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                place.category,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.secondary,
-                  fontWeight: FontWeight.bold,
-                  overflow: TextOverflow.ellipsis,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  place.category,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: theme.colorScheme.secondary,
+                    fontWeight: FontWeight.bold,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                place.name,
-                style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Noto Serif',
-                  overflow: TextOverflow.ellipsis,
+                const SizedBox(height: 4),
+                Text(
+                  place.name,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Noto Serif',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  maxLines: 2,
                 ),
-                maxLines: 2,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              // Text(
-              //   place.description,
-              //   style: theme.textTheme.titleSmall?.copyWith(
-              //     color: theme.textTheme.titleSmall?.color?.withOpacity(0.8),
-              //     fontWeight: FontWeight.w200,
-              //   ),
-              //   maxLines: 2,
-              //   overflow: TextOverflow.ellipsis,
-              // ),
-            ],
+                const SizedBox(
+                  height: 5,
+                ),
+                // Text(
+                //   place.description,
+                //   style: theme.textTheme.titleSmall?.copyWith(
+                //     color: theme.textTheme.titleSmall?.color?.withOpacity(0.8),
+                //     fontWeight: FontWeight.w200,
+                //   ),
+                //   maxLines: 2,
+                //   overflow: TextOverflow.ellipsis,
+                // ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

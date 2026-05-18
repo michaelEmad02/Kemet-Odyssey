@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
+import 'package:kemet_odyssey/features/planning/domain/entities/plan_entity.dart';
 import 'package:kemet_odyssey/features/home/presentation/ui/widgets/plan_card.dart';
 
 class BuildPlansListView extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
+import 'package:kemet_odyssey/features/planning/domain/entities/plan_entity.dart';
 import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_plan_use_case.dart';
 import 'package:meta/meta.dart';
 

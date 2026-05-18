@@ -7,11 +7,9 @@ import 'package:kemet_odyssey/core/domain/entities/city_entity.dart';
 class CityCard extends StatelessWidget {
   final CityEntity city;
 
-
   const CityCard({
     super.key,
     required this.city,
- 
   });
 
   @override
@@ -22,7 +20,7 @@ class CityCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           'city_details',
-          pathParameters: {'id': city.name.toLowerCase().replaceAll(' ', '_')},
+          pathParameters: {'id': city.id.toString()},
         );
       },
       child: Container(

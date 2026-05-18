@@ -1,4 +1,4 @@
-import 'package:kemet_odyssey/features/home/domain/entities/plan_places_entity.dart';
+import 'package:kemet_odyssey/features/planning/domain/entities/plan_places_entity.dart';
 
 class PlanPlacesModel extends PlanPlacesEntity {
   const PlanPlacesModel({

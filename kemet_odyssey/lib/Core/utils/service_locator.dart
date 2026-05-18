@@ -29,9 +29,11 @@ import 'package:kemet_odyssey/features/home/data/datasources/home_local_data_sou
 import 'package:kemet_odyssey/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:kemet_odyssey/features/home/data/repositories/home_repo_implemenation.dart';
 import 'package:kemet_odyssey/features/home/domain/repositories/home_repo.dart';
+import 'package:kemet_odyssey/features/home/domain/usecases/fetch_place_details_use_case.dart';
 import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_cities_use_case.dart';
 import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_palces_use_case.dart';
 import 'package:kemet_odyssey/features/home/domain/usecases/fetch_top_plan_use_case.dart';
+import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_place_details_bloc.dart';
 import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_cities_bloc.dart';
 import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_places_bloc.dart';
 import 'package:kemet_odyssey/features/home/presentation/manager/bloc/fetch_top_plans_bloc.dart';
@@ -116,6 +118,9 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<FetchTopPlanUseCase>(
       () => FetchTopPlanUseCase(homeRepo: getIt<HomeRepo>()));
 
+  getIt.registerLazySingleton<FetchPlaceDetailsUseCase>(
+      () => getIt<FetchPlaceDetailsUseCase>());
+
   // Cubits
   getIt.registerFactory<FetchDestinationsDataCubit>(
     () => FetchDestinationsDataCubit(
@@ -142,4 +147,7 @@ Future<void> setupServiceLocator() async {
       () => FetchTopPlacesBloc(getIt<FetchTopPalcesUseCase>()));
   getIt.registerFactory<FetchTopPlansBloc>(
       () => FetchTopPlansBloc(getIt<FetchTopPlanUseCase>()));
+
+  getIt.registerFactory<FetchPlaceDetailsBloc>(
+      () => FetchPlaceDetailsBloc(getIt<FetchPlaceDetailsUseCase>()));
 }

@@ -1,5 +1,5 @@
 import 'package:kemet_odyssey/features/home/data/models/plan_day_model.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
+import 'package:kemet_odyssey/features/planning/domain/entities/plan_entity.dart';
 
 class PlanModel extends PlanEntity {
   const PlanModel({

@@ -6,7 +6,7 @@ import 'package:kemet_odyssey/core/errors/firebase_failures.dart';
 import 'package:kemet_odyssey/core/errors/server_failure.dart';
 import 'package:kemet_odyssey/features/home/data/datasources/home_local_data_source.dart';
 import 'package:kemet_odyssey/features/home/data/datasources/home_remote_data_source.dart';
-import 'package:kemet_odyssey/features/home/domain/entities/plan_entity.dart';
+import 'package:kemet_odyssey/features/planning/domain/entities/plan_entity.dart';
 import 'package:kemet_odyssey/features/home/domain/repositories/home_repo.dart';
 
 class HomeRepoImplemenation extends HomeRepo {
